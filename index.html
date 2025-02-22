@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="topHeading">
+        <div class="container">
+            <div class="topLinks">
+                <ul>
+                    <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Tap.az</a></li>
+                    <li><a href="https://bina.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Bina.az</a></li>
+                    <li><a href="https://boss.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Boss.az</a></li>
+                </ul>
+                <ul>
+                    <li><p>Destek: (012) 505-77-55</p></li>
+                    <li><p>Yardim</p></li>
+                    <li><p>RU</p></li>
+                    <li><i class="fa-solid fa-heart"></i> Secilmisler</li>
+                    <li><i class="fa-solid fa-user"></i> Giris</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="container">
+            <div class="navlinks">
+                <a href="#" class="logo">TURBO.AZ</a>
+                <ul>
+                    <li><a href="">Butun elanlar</a></li>
+                    <li><a href="">Avtosalonlar</a></li>
+                    <li><a href="">Moto</a></li>
+                    <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
+                </ul>
+                <div class="rightLinks">
+                    <button class="elan_elave">+Yeni elan</button>
+                    <div><i class="fa-solid fa-cart-shopping"></i></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <section id="filter">
+                <select id="marka"></select>
+                <input type="number" class="min_qiymet" placeholder="Min. qiymet">
+                <input type="number" class="max_qiymet" placeholder="Max. qiymet">
+                <select id="qiymetSort">
+                    <option value="sort" disabled selected>Sirala</option>
+                    <option value="sifirla">Sifirla</option>
+                    <option value="ucuzdan">Ucuz-Baha</option>
+                    <option value="bahadan">Baha-Ucuz</option>
+                </select>
+                <select id="minIl"></select>
+                <select id="maxIl"></select>
+                <div class="search_box">
+                    <input type="text" class="search_input" placeholder="Axtaris">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="carsBox">
+                <div class="cars" onclick="showDetails()"><img src="" alt=""></div>
+            </section>
+        </div>
+    </main>
+    <footer></footer>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>

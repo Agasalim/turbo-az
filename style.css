@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {background-color: #eee;}
+.container {
+    width: 1200px;
+    margin: auto;
+}
+.topLinks {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+.topLinks a, .topLinks p {
+    font: 400 1rem Rubik;
+    color: #4b5563;
+}
+.topLinks ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    text-decoration: none;
+}
+nav {
+    background-color: red;
+    padding: 15px 0;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    font: 400 1rem Rubik;
+}
+.logo {font-weight: 500;}
+.topLinks a {text-decoration: none;}
+.navlinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navlinks ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+.rightLinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.elan_elave {
+    background-color: #80D128;
+    border: 1px solid #80D128;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font: 1rem Rubik;
+    padding: 10px;
+    text-align: center;
+    transition: .3s;
+    width: 100px;
+}
+.elan_elave:hover {
+    background-color: #62b904;
+    border-color: #62b904;
+}
+.elan_elave:active {
+    background-color: #62b904;
+    border-color: #62b904;
+}
+.fa-cart-shopping {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/** FILTER SECTION */
+header{
+    padding: 30px 0;
+    background-color: #e6e4e4;
+}
+#filter{
+    display: flex;
+    justify-content: space-between;
+}
+.search_box {
+    position: relative;
+    width: 220px;
+}
+.search_input {
+    padding: 10px;
+    border: 1px solid #4b5563;
+    border-radius: 10px;
+    background: white;
+    color: #4b5563;
+    width: 100%;
+    outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"]{padding:0 10px;}
+.search_input:focus {border-color: #1878f5;}
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+
+/** CARS SECTION */
+#carsBox{
+    height: fit-content;
+    padding: 100px 0;
+}
+.cars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.car {
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.car:hover {box-shadow: 0 5px 10px rgba(0, 0, 0, 0.685);}
+.car_img {position: relative;}
+.car_img .fa-regular {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.car_img .fa-regular:hover {color: #f10b0b;}
+.car_img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.car .car_price {
+    color: #1f2937;
+    font-weight: 600;
+    font: 600 1.3rem Rubik;
+}
+.car .car_model {
+    color: #1f2937;
+    font: 1.2rem Rubik;
+    margin: 10px 0;
+}
+.car .car_info {
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 1rem Rubik;
+}
+.car .car_color {
+    border-radius: 10px;
+    padding: 5px;
+    width: 80px;
+    text-align: center;
+    text-transform: capitalize;
+    background: linear-gradient(135deg, #1e1e1eb6 0%, #334155 100%);        
+}
+.model_info{
+    display: flex;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+.model_info h4{
+    font: 600 1rem Rubik;
+    color: #334155;
+}
+.fa-left-long{
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #334155;
+}
+.more_info{
+    display: flex; 
+    justify-content: space-between;
+}
+.model_img{
+    width: 800px;
+    position: relative;
+}
+.model_img img{
+    width: 100%;
+    /* height: 450px; */
+    object-fit: cover;
+    border-radius: 20px;
+}
+.model_img i{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    transition: .3s;
+    cursor: pointer;
+    color: #f10b0b;
+}
+.fa-regular:hover{color: #c00404;}
+.more_info .car_info{
+    border: 1px solid #1f2937;
+    border-radius: 20px;
+    padding: 20px;
+}
+.car_info .car_price{
+    font: 500 1.2rem Rubik;
+    color: #1f2937;
+}
+.car_img_small{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.car_img_small img{
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+.distrubitor p{
+    margin-bottom: 8px;
+    font: 500 1.1rem Rubik;
+    color: #1f2937;
+}
+.distrubitor span{
+    font: 500 1rem Rubik;
+    color: #4b5563;
+}
+.buy_car, .salon{
+    font:500 1rem Rubik;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #3DB560;
+    color: white;
+    border: none;
+    margin: 20px 0;
+}
+.salon{background-color: #1878f5;}
+.buy_car i{margin-right: 10px;}
+.detail{
+    font:400 1rem Rubik;
+    color: #1f2937;
+    opacity: 0.8
+}
