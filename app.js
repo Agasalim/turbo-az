@@ -20,8 +20,19 @@ let minQiymet = document.querySelector(".min_qiymet");
 let maxQiymet = document.querySelector(".max_qiymet");
 let minIl = document.querySelector("#minIl");
 let maxIl = document.querySelector("#maxIl");
-let axtaris = document.querySelector(".serch_input");
+let axtaris = document.querySelector(".search_input");
 let qiymetSort = document.querySelector("#qiymetSort");
+let shoppingCard = document.querySelector("#shoppingCard");
+let closeBasket = document.querySelector("#closeBasket");
+let sebet = document.querySelector("#sebet");
+let orderList = document.querySelector(".order_list");
+let totalAmount = document.querySelector(".totalAmount");
+let sebetList = [];
+
+sebet.style.right = "-400px"
+shoppingCard.onclick = () => sebet.style.right = "0"
+closeBasket.onclick = () => sebet.style.right = "-400px"
+
 showCars();
 markaList();
 minilSecim();
@@ -29,23 +40,92 @@ maxilSecim();
 function showCars(carList = carModels){
     cars.innerHTML ="";
     carList
-    // .filter(item => item.marka.toLocaleLowerCase().includes(axtaris.value.toLocaleLowerCase())) //! includes alinmir
     .map((masin) => {
         cars.innerHTML +=`
         <div class="car">
-            <div class="car_img">
+            <div class="car_img mb-4">
                 <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
                 <i class="fa-regular fa-heart" onclick="sec(this)"></i>
             </div>
             <h3 class="car_price">${masin.qiymet}</h3>
-            <h4 class="car_model">${masin.marka}${masin.model}</h4>
-            <div class="car_info">
+            <h4 class="car_model">${masin.marka} ${masin.model}</h4>
+            <div class="car_info justify-between">
                 <p class="car_year">${masin.il},</p>
                 <p class="engine">${masin.mator} L,</p>
                 <p class="car_color"  style="color: ${masin.reng};">${masin.reng}</p>
             </div>
+            <div class="mt-2 flex justify-center">
+                <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
+            </div>
         </div>`
     })
+}
+function showSebet(){
+    debugger
+    orderList.innerHTML = ""
+    sebetList.forEach(element =>{
+        orderList.innerHTML += `
+            <div class="order_car relative flex gap-3 py-4 mt-3">
+                <div class="order_img mt-2">
+                    <img src="${element.img}" alt="sekil" class="w-32">
+                </div>
+                <div class="order_info">
+                    <h6 class="order_model_name font-medium text-xl">${element.marka}</h6>
+                    <h4 class="order_model_name font-medium text-xl">${element.model}</h4>
+                    <p class="order_color text-base">${element.reng}</p>
+                    <p class="order_count p-0 my-2">
+                        <span onclick="countAzalt(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">-</span>
+                        <span class="px-3 py-1 m-0 bg-slate-400">${element.count}</span>
+                        <span onclick="countArtir(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">+</span>
+                    </p>
+                    <button onclick="removeOrder(${element.id})" class="remove_btn"><i class="fa-solid fa-trash-can mr-2"></i>Sil</button>
+                    <span class="order_price absolute right-0 top-4 text-lg font-medium">${element.qiymet} AZN</span>
+                </div>
+            </div>`
+    })
+    toplamOdenis();
+}
+function countArtir(id){
+    let elaveMasin = sebetList.find(element => element.id == id)
+    elaveMasin.count++
+    showSebet();
+}
+function countAzalt(id){
+    let azaltMasin = sebetList.find(element => element.id == id)
+    azaltMasin.count--
+    let index = sebetList.findIndex(item => item.id == id)
+    if(sebetList[index].count <= 0) sebetList.splice(index,1)
+    showSebet();
+}
+function addToCard(id){
+    debugger
+    let secilenMasin = carModels.find(element => element.id == id)
+    let sebetdeVarmi = sebetList.find(item => item.id == id)
+    if(sebetdeVarmi){
+        sebetdeVarmi.count++
+    }
+    else{
+        secilenMasin = {...secilenMasin, count: 1}
+        sebetList.push(secilenMasin)
+    }
+    showSebet();
+}
+function toplamOdenis(){
+    toplamOdenis.innerHTML = ""
+    let cemPrice = 0;
+    sebetList.forEach(item => {
+        cemPrice = cemPrice + (Number(item.qiymet.replace(/\s/g,"")) * +item.count)
+        totalAmount.innerHTML = `${cemPrice} AZN`
+    })
+}
+axtaris.oninput = function() {
+    let searchTerm = axtaris.value.trim().toLowerCase();
+    let filteredCars = carModels.filter(item => 
+        item.marka.toLowerCase().includes(searchTerm) ||
+        item.model.toLowerCase().includes(searchTerm) ||
+        item.mator.toLowerCase().includes(searchTerm)
+    );
+    showCars(filteredCars);
 }
 function showDetails(id){
     let carDetail = carModels.find(masin => masin.id==id)
@@ -53,17 +133,17 @@ function showDetails(id){
     <div class="car_details">
         <div class="model_info">
             <i class="fa-solid fa-left-long" onclick="goBack()"></i>
-            <h4 class="car_model">${carDetail.marka}  ${carDetail.model}</h4>
+            <h4 class="car_model">${carDetail.marka} <span>${carDetail.model}</span></h4>
             <h4 class="car_year"> ${carDetail.il},</h4>
             <h4 class="engine"> ${carDetail.mator} L,</h4>
             <h4 class="car_color"> ${carDetail.reng}</h4>
         </div>
         <div class="more_info">
-            <div class="model_img">
-                <img src="${carDetail.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
-                <i class="fa-regular fa-heart" onclick="sec(this)"></i>
+            <div class="model_img relative w-[60%]">
+                <img class="rounded-[20px] object-cover" src="${carDetail.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
+                <i class="fa-regular fa-heart absolute" onclick="sec(this)"></i>
             </div>
-            <div class="car_info">
+            <div class="car_details bg-slate-300 w-[37%] border-2 p-5 rounded-[20px]">
                 <h3 class="car_price">Qiymet: ${carDetail.qiymet} AZN</h3>
                 <div class="car_img_small">
                     <img src="${carDetail.img}"/>
@@ -75,22 +155,24 @@ function showDetails(id){
                 <button class="buy_car"><i class="fa-solid fa-phone"></i>Zeng et</button>
                 <p class="detail">Masinin hec bir problemi yoxdu, sadece korpuden caya dusub.
                     Hec bir ustanin yanina aparmaga ehtiyac yoxdu, eyilib altina baxsan her sey belli olacaq!</p>
-                <button class="salon">Salona kec</button>
+                <button class="w-[100%] bg-[#3DB460] p-3 my-4 text-white rounded-[10px] text-lg font-medium">Add to Card</button>
             </div>
         </div>
     </div>`
 }
-function goBack(){
-    showCars()
-}
+goBack = showCars;
 function sec(icon){
     icon.classList.toggle("fa-regular");
     icon.classList.toggle("fa-solid");
 }
-function markaList(){
+function markaList(){ // masin siyahisini yaradib selecte elave etmek
+    let masinAdlari = [];
+    carModels.forEach(item => {
+        masinAdlari.includes(item.marka) ? '' : masinAdlari.push(item.marka)
+    })
     marka.innerHTML += `<option value="butunmodeller">Butun modeller</option>`
-    carModels.forEach(element => {
-        marka.innerHTML += `<option value="${element.marka}">${element.marka}</option>`
+    masinAdlari.forEach(element => {
+        marka.innerHTML += `<option value="${element}">${element}</option>`
     });
 }
 marka.onchange = function(){
@@ -100,27 +182,27 @@ marka.onchange = function(){
         showCars(markaCar);
     }
 }
-function minilSecim(){
+function minilSecim(){ // illeri selecte elave etmek
     let iller = new Set(carModels.map(item => item.il))
     let siralanmisIller = [...iller]
     siralanmisIller.sort((a, b) => a - b);
-    minIl.innerHTML += `<option value="minimumIl" disabled selected>Min. il</option>`
+    minIl.innerHTML += `<option value="minimumIl" hidden selected>Min. il</option>`
     minIl.innerHTML += `<option value="butuniller">Butun iller</option>`
     siralanmisIller.forEach(item => {
         minIl.innerHTML += `<option value="${item}">${item}</option>`
     })
 }
-function maxilSecim(){
+function maxilSecim(){ // illeri selecte elave etmek
     let iller = new Set(carModels.map(item => item.il))
     let siralanmisIller = [...iller];
     siralanmisIller.sort((a, b) => a - b);
-    maxIl.innerHTML += `<option value="maximumIl" disabled selected>Max. il</option>`
+    maxIl.innerHTML += `<option value="maximumIl" hidden selected>Max. il</option>`
     maxIl.innerHTML += `<option value="butuniller">Butun iller</option>`
     siralanmisIller.forEach(item => {
         maxIl.innerHTML += `<option value="${item}">${item}</option>`
     })
 }
-minIl.onchange = function(){ //! minimum maximum  filterleme duz islemir
+minIl.onchange = function(){
     if(minIl.value == "butuniller" || minIl.value == "minimumIl"){
         showCars(carModels);
         return;
@@ -133,7 +215,7 @@ minIl.onchange = function(){ //! minimum maximum  filterleme duz islemir
     })
     showCars(iller);
 }
-maxIl.onchange = function(){ //! minimum maximum  filterleme  duz islemir
+maxIl.onchange = function(){
     if(maxIl.value == "butuniller" || maxIl.value == "maximumIl"){
         showCars(carModels);
         return;
@@ -168,31 +250,14 @@ qiymetSort.onchange = function(){
     }
     else if(qiymetSort.value == "sifirla") showCars();
 }
-axtaris.oninput = function(){
-    cars.innerHTML = "";
-    showCars();
+function priceFilter() {
+    let minPrice = minQiymet.value === "" ? 0 : Number(minQiymet.value);
+    let maxPrice = maxQiymet.value === "" ? Infinity : Number(maxQiymet.value);
+    let filteredCars = carModels.filter(item => {
+        let price = Number(item.qiymet.replace(/\s/g, ""));
+        return price >= minPrice && price <= maxPrice;
+    });
+    showCars(filteredCars);
 }
-minQiymet.oninput = function(){ //! islemir
-    if(minQiymet.value == "" && +minQiymet.value <= 0) {
-        showCars();
-        return;
-    }
-    else{
-        carModels.filter((item) => {
-            let price = Number(item.qiymet.replace(/\s/g, ""));
-            return price >= +minQiymet.value && price <= +maxQiymet.value
-        })
-    }
-}
-maxQiymet.oninput = function(){ //! islemir
-    if(maxQiymet.value == "" && maxQiymet.value <= 0){
-        showCars();
-        return;
-    }
-    else{
-        carModels.filter(item => {
-            let price = Number(item.qiymet.replace(/\s/g, ""))
-            return price <= +maxQiymet.value && price >= +minQiymet.value
-        })
-    }
-}
+maxQiymet.oninput = priceFilter;
+minQiymet.oninput = priceFilter;

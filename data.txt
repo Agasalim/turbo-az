@@ -17,9 +17,5 @@ const arr = [
 
 
 TASK:
-1. datalar əsasında cardları çıxardırıq
-2. details səhifəsi yazırıq
-3. search yazırıq
-4. select option ilə marka ya görə filterləmə yazırıq (optionlarım data dan gəlməlidir)
-5. side bar ı hazır edin
-(TAİLWIND ilə yazırıq)
+show more
+basketdən silmə

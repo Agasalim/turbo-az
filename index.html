@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -18,14 +20,23 @@
         <div class="container">
             <div class="topLinks">
                 <ul>
-                    <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Tap.az</a></li>
-                    <li><a href="https://bina.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Bina.az</a></li>
-                    <li><a href="https://boss.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA." target="_blank">Boss.az</a></li>
+                    <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Tap.az</a></li>
+                    <li><a href="https://bina.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Bina.az</a></li>
+                    <li><a href="https://boss.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Boss.az</a></li>
                 </ul>
                 <ul>
-                    <li><p>Destek: (012) 505-77-55</p></li>
-                    <li><p>Yardim</p></li>
-                    <li><p>RU</p></li>
+                    <li>
+                        <p>Destek: (012) 505-77-55</p>
+                    </li>
+                    <li>
+                        <p>Yardim</p>
+                    </li>
+                    <li>
+                        <p>RU</p>
+                    </li>
                     <li><i class="fa-solid fa-heart"></i> Secilmisler</li>
                     <li><i class="fa-solid fa-user"></i> Giris</li>
                 </ul>
@@ -44,28 +55,31 @@
                 </ul>
                 <div class="rightLinks">
                     <button class="elan_elave">+Yeni elan</button>
-                    <div><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div><i id="shoppingCard"
+                            class="fa-solid fa-cart-shopping cursor-pointer hover:text-[#80D128] p-2 transition"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header>
+    <header class="relative">
         <div class="container">
             <section id="filter">
-                <select id="marka"></select>
-                <input type="number" class="min_qiymet" placeholder="Min. qiymet">
-                <input type="number" class="max_qiymet" placeholder="Max. qiymet">
-                <select id="qiymetSort">
-                    <option value="sort" disabled selected>Sirala</option>
+                <select id="marka" class="p-3 rounded-[10px] text-slate-600"></select>
+                <input type="number" class="min_qiymet rounded-[10px] px-3" placeholder="Min. qiymet">
+                <input type="number" class="max_qiymet rounded-[10px] px-3" placeholder="Max. qiymet">
+                <select id="qiymetSort" class="p-3 rounded-[10px] text-slate-600">
+                    <option value="sort" hidden selected>Qiymeti sirala</option>
                     <option value="sifirla">Sifirla</option>
                     <option value="ucuzdan">Ucuz-Baha</option>
                     <option value="bahadan">Baha-Ucuz</option>
                 </select>
-                <select id="minIl"></select>
-                <select id="maxIl"></select>
-                <div class="search_box">
-                    <input type="text" class="search_input" placeholder="Axtaris">
+                <select id="minIl" class="p-3 rounded-[10px] text-slate-600"></select>
+                <select id="maxIl" class="p-3 rounded-[10px] text-slate-600"></select>
+                <div class="search_box relative">
+                    <input type="text" class="search_input w-[250px] p-3 rounded-[10px] outline-none"
+                        placeholder="Axtaris-Marka,Model,Motor">
                     <i class="fas fa-search search-icon"></i>
                 </div>
             </section>
@@ -73,6 +87,35 @@
     </header>
 
     <main>
+        <div class="container">
+            <div id="sebet" class="w-[400px] bg-white p-5 absolute right-0 top-0 transition-[.5s]">
+                <i id="closeBasket" class="fa-solid fa-xmark text-2xl cursor-pointer mb-3"></i>
+                <h4 class="card_heading font-semibold text-3xl">Sizin sifarisler</h4>
+                <div class="order_list p-4 gap-4">
+                    <!-- <div class="order_car relative flex gap-3 py-4 mt-3">
+                        <div class="order_img mt-2">
+                            <img src="https://turbo.azstatic.com/uploads/full/2022%2F02%2F07%2F16%2F20%2F36%2F05ae3ec7-b845-4458-8033-99eec8aec1a2%2F83217_ryHX2Q7AONB3-jC_sEJ3mQ.jpg" alt="sekil" 
+                            class="w-32">
+                        </div>
+                        <div class="order_info">
+                            <h6 class="order_model_name font-medium text-xl">Mercedes</h6>
+                            <p class="order_color text-base">blue</p>
+                            <p class="order_count p-0 my-2"><span class="px-2 m-0 bg-slate-200 cursor-pointer">-</span><span class="px-3 m-0 bg-slate-400">1</span><span class="px-2 m-0 bg-slate-200 cursor-pointer">+</span></p>
+                            <button class="remove_btn"><i class="fa-solid fa-trash-can mr-2"></i>Sil</button>
+                            <span class="order_price absolute right-0 top-4 text-lg font-medium">10500 azn</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="purchase">
+                    <p class="flex justify-between items-center px-5">
+                        <span class="text-2xl">Cem:</span>
+                        <span class="totalAmount text-xl text-[#FF0000] font-bold"></span>
+                    </p>
+                    <button class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">Sifarisi tamamla</button>
+                </div>
+            </div>    
+        </div>
+
         <div class="container">
             <section id="carsBox">
                 <div class="cars" onclick="showDetails()"><img src="" alt=""></div>
