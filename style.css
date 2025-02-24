@@ -104,12 +104,6 @@ input[type="number"]::-webkit-outer-spin-button{
     height: fit-content;
     padding: 100px 0;
 }
-.cars {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
 .car {
     border: 1px solid gray;
     border-radius: 10px;

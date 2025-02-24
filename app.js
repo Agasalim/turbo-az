@@ -37,9 +37,13 @@ showCars();
 markaList();
 minilSecim();
 maxilSecim();
-function showCars(carList = carModels){
+let reqem = 4;
+function showCars(carList = carModels){ //! reqem - islemir, log-da error verir, kodda da islemir
+    // debugger
+    // console.log(typeof reqem);    
     cars.innerHTML ="";
     carList
+    // .slice(0, 4)
     .map((masin) => {
         cars.innerHTML +=`
         <div class="car">
@@ -59,9 +63,21 @@ function showCars(carList = carModels){
             </div>
         </div>`
     })
+    // if(count >= carList.length){
+    //     cars.innerHTML += `
+    //     <div class="more flex justify-center">
+    //         <button class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium" 
+    //                 onclick="ShowMore()">Show more
+    //             <i class="fa-solid fa-angles-right ml-3"></i>
+    //         </button>
+    //     </div>`
+    // }
+}
+function ShowMore(){
+    reqem++;
+    showCars();
 }
 function showSebet(){
-    debugger
     orderList.innerHTML = ""
     sebetList.forEach(element =>{
         orderList.innerHTML += `
@@ -84,6 +100,11 @@ function showSebet(){
             </div>`
     })
     toplamOdenis();
+}
+function removeOrder(id){
+    let index = sebetList.findIndex(item => item.id == id)
+    sebetList.splice(index, 1)
+    showSebet();
 }
 function countArtir(id){
     let elaveMasin = sebetList.find(element => element.id == id)
@@ -111,7 +132,7 @@ function addToCard(id){
     showSebet();
 }
 function toplamOdenis(){
-    toplamOdenis.innerHTML = ""
+    totalAmount.innerHTML = ""
     let cemPrice = 0;
     sebetList.forEach(item => {
         cemPrice = cemPrice + (Number(item.qiymet.replace(/\s/g,"")) * +item.count)
@@ -133,7 +154,7 @@ function showDetails(id){
     <div class="car_details">
         <div class="model_info">
             <i class="fa-solid fa-left-long" onclick="goBack()"></i>
-            <h4 class="car_model">${carDetail.marka} <span>${carDetail.model}</span></h4>
+            <h4 class="car_model">${carDetail.marka} ${carDetail.model}</h4>
             <h4 class="car_year"> ${carDetail.il},</h4>
             <h4 class="engine"> ${carDetail.mator} L,</h4>
             <h4 class="car_color"> ${carDetail.reng}</h4>
