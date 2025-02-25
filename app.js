@@ -15,6 +15,7 @@ let carModels = [
     { id: 14, marka: 'Volkswagen', qiymet: '23 200', model: 'Golf', mator: '2.0', il: '2019', reng: 'white', img: 'https://turbo.azstatic.com/uploads/full/2023%2F02%2F17%2F15%2F03%2F28%2F97566bce-3bcb-43ff-8c96-5274fdf59360%2F74622_ZZd9ojx9ZyTk5EOyx7D3wA.jpg'}
 ]
 let cars = document.querySelector(".cars")
+let carsBox = document.querySelector("#carsBox")
 let marka = document.querySelector("#marka");
 let minQiymet = document.querySelector(".min_qiymet");
 let maxQiymet = document.querySelector(".max_qiymet");
@@ -27,7 +28,18 @@ let closeBasket = document.querySelector("#closeBasket");
 let sebet = document.querySelector("#sebet");
 let orderList = document.querySelector(".order_list");
 let totalAmount = document.querySelector(".totalAmount");
+let navlinksList = document.querySelector(".navlinks_list");
+let menuBar = document.querySelector(".menu_bar");
 let sebetList = [];
+
+menuBar.onclick = function(){
+    if(navlinksList.style.display == "none"){
+        navlinksList.style.display = "flex"
+    }
+    else{
+        navlinksList.style.display = "none"
+    }
+}
 
 sebet.style.right = "-400px"
 shoppingCard.onclick = () => sebet.style.right = "0"
@@ -39,7 +51,7 @@ minilSecim();
 maxilSecim();
 let reqem = 4;
 function showCars(carList = carModels){ //! reqem - islemir, log-da error verir, kodda da islemir
-    // debugger
+    debugger
     // console.log(typeof reqem);    
     cars.innerHTML ="";
     carList
@@ -63,15 +75,6 @@ function showCars(carList = carModels){ //! reqem - islemir, log-da error verir,
             </div>
         </div>`
     })
-    // if(count >= carList.length){
-    //     cars.innerHTML += `
-    //     <div class="more flex justify-center">
-    //         <button class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium" 
-    //                 onclick="ShowMore()">Show more
-    //             <i class="fa-solid fa-angles-right ml-3"></i>
-    //         </button>
-    //     </div>`
-    // }
 }
 function ShowMore(){
     reqem++;

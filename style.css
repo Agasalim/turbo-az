@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 body {background-color: #eee;}
-.container {
-    width: 1200px;
-    margin: auto;
-}
 .topLinks {
     display: flex;
     justify-content: space-between;
@@ -34,21 +30,6 @@ nav a {
 }
 .logo {font-weight: 500;}
 .topLinks a {text-decoration: none;}
-.navlinks {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.navlinks ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-.rightLinks {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
 .elan_elave {
     background-color: #80D128;
     border: 1px solid #80D128;
@@ -69,6 +50,7 @@ nav a {
     background-color: #62b904;
     border-color: #62b904;
 }
+.menu_bar{display: none; cursor: pointer;}
 .fa-cart-shopping {
     color: white;
     font-size: 1.5rem;
@@ -76,11 +58,6 @@ nav a {
 
 /** FILTER SECTION */
 header{background-color: #e6e4e4;}
-#filter{
-    padding: 30px 0;
-    display: flex;
-    justify-content: space-between;
-}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button{
     -webkit-appearance: none;
@@ -96,7 +73,15 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 /** BASKET */
-#sebet{z-index: 999;}
+#sebet{
+    z-index: 999;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.5s ease;
+    position: fixed;
+    max-width: 100%;
+}
 .order_car{border-top: 1px solid gray;}
 
 /** CARS SECTION */
@@ -225,4 +210,38 @@ input[type="number"]::-webkit-outer-spin-button{
     color: #1f2937;
     opacity: 0.8;
     margin-left: 10px;
+}
+@media (max-width:991px){
+    .menu_bar{display: block;}
+    .topLinks{flex-direction: column;}
+    .topLinks ul{flex-direction: column;}
+}
+@media (max-width:768px) {
+    /* nav{overflow: hidden;} */
+    .navlinks ul{
+        display: block;
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 15px 0;
+        margin-top: 15px;
+        z-index: 888;
+        flex-direction: column;
+        background-color: red;
+        gap: 0;
+    }
+    .navlinks ul li{
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+    .navlinks ul a{
+        text-align: left;
+        display: block;
+        padding: 10px 20px;
+        border-top: 1px solid #80D128;
+        transition: .3s;
+    }
+    .navlinks ul a:hover{background-color: #80D128;}
 }

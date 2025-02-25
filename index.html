@@ -17,8 +17,8 @@
 <body>
 
     <div class="topHeading">
-        <div class="container w-[1200px]">
-            <div class="topLinks">
+        <div class="container m-auto">
+            <div class="topLinks flex items-center">
                 <ul>
                     <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
                             target="_blank">Tap.az</a></li>
@@ -28,9 +28,15 @@
                             target="_blank">Boss.az</a></li>
                 </ul>
                 <ul>
-                    <li><p>Destek: (012) 505-77-55</p></li>
-                    <li><p>Yardim</p></li>
-                    <li><p>RU</p></li>
+                    <li>
+                        <p>Destek: (012) 505-77-55</p>
+                    </li>
+                    <li>
+                        <p>Yardim</p>
+                    </li>
+                    <li>
+                        <p>RU</p>
+                    </li>
                     <li><i class="fa-solid fa-heart"></i> Secilmisler</li>
                     <li><i class="fa-solid fa-user"></i> Giris</li>
                 </ul>
@@ -38,41 +44,48 @@
         </div>
     </div>
     <nav>
-        <div class="container w-[1200px]">
-            <div class="navlinks">
-                <a href="#" class="logo">TURBO.AZ</a>
-                <ul>
-                    <li><a href="">Butun elanlar</a></li>
-                    <li><a href="">Avtosalonlar</a></li>
-                    <li><a href="">Moto</a></li>
-                    <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
-                </ul>
-                <div class="rightLinks">
-                    <button class="elan_elave">+Yeni elan</button>
-                    <div><i id="shoppingCard"
-                            class="fa-solid fa-cart-shopping cursor-pointer hover:text-[#80D128] p-2 transition"></i>
+        <div class="container m-auto">
+            <div class="navbar relative flex items-center justify-between">
+                <a href="#" class="logo mr-4 flex items-center">TURBO.AZ</a>
+                <div class="navlinks relative flex items-center gap-5">
+                    <ul class="navlinks_list flex items-center gap-3">
+                        <li><a href="">Butun elanlar</a></li>
+                        <li><a href="">Avtosalonlar</a></li>
+                        <li><a href="">Moto</a></li>
+                        <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
+                    </ul>
+                    <div class="rightLinks flex">
+                        <button class="elan_elave">+Yeni elan</button>
+                        <div><i id="shoppingCard"
+                                class="fa-solid fa-cart-shopping cursor-pointer hover:text-[#80D128] p-2 transition"></i>
+                        </div>
                     </div>
+                    <div class="menu_bar"><i class="fa-solid fa-bars text-2xl text-white"></i></div>
                 </div>
             </div>
         </div>
     </nav>
 
     <header class="relative">
-        <div class="container w-[1200px]">
-            <section id="filter">
-                <select id="marka" class="p-3 rounded-[10px] text-slate-600"></select>
-                <input type="number" class="min_qiymet rounded-[10px] px-3" placeholder="Min. qiymet">
-                <input type="number" class="max_qiymet rounded-[10px] px-3" placeholder="Max. qiymet">
-                <select id="qiymetSort" class="p-3 rounded-[10px] text-slate-600">
+        <div class="container m-auto">
+            <section id="filter" class="flex flex-wrap gap-3 py-7 justify-center">
+                <select id="marka" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
+                <div class="flex gap-3">
+                    <input type="number" class="min_qiymet rounded-[7px] p-2 mb-3" placeholder="Min. qiymet">
+                    <input type="number" class="max_qiymet rounded-[7px] p-2 mb-3" placeholder="Max. qiymet">
+                </div>
+                <select id="qiymetSort" class="p-2 mb-3 rounded-[7px] text-slate-600">
                     <option value="sort" hidden selected>Qiymeti sirala</option>
                     <option value="sifirla">Sifirla</option>
                     <option value="ucuzdan">Ucuz-Baha</option>
                     <option value="bahadan">Baha-Ucuz</option>
                 </select>
-                <select id="minIl" class="p-3 rounded-[10px] text-slate-600"></select>
-                <select id="maxIl" class="p-3 rounded-[10px] text-slate-600"></select>
+                <div class="flex gap-3">
+                    <select id="minIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
+                    <select id="maxIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
+                </div>
                 <div class="search_box relative">
-                    <input type="text" class="search_input w-[250px] p-3 rounded-[10px] outline-none"
+                    <input type="text" class="search_input w-[250px] p-2 mb-3 rounded-[7px] outline-none"
                         placeholder="Axtaris-Marka,Model,Motor">
                     <i class="fas fa-search search-icon"></i>
                 </div>
@@ -80,39 +93,34 @@
         </div>
     </header>
 
-    <main>
-        <div class="container w-[1200px]">
+    <main class="relative">
+        <div class="container m-auto">
             <div id="sebet" class="w-[400px] bg-white p-5 absolute right-0 top-0 transition-[.5s]">
                 <i id="closeBasket" class="fa-solid fa-xmark text-2xl cursor-pointer mb-3"></i>
                 <h4 class="card_heading font-semibold text-3xl">Sizin sifarisler</h4>
-                <div class="order_list p-4 gap-4">
-                    <!-- <div class="order_car relative flex gap-3 py-4 mt-3">
-                        <div class="order_img mt-2">
-                            <img src="https://turbo.azstatic.com/uploads/full/2022%2F02%2F07%2F16%2F20%2F36%2F05ae3ec7-b845-4458-8033-99eec8aec1a2%2F83217_ryHX2Q7AONB3-jC_sEJ3mQ.jpg" alt="sekil" 
-                            class="w-32">
-                        </div>
-                        <div class="order_info">
-                            <h6 class="order_model_name font-medium text-xl">Mercedes</h6>
-                            <p class="order_color text-base">blue</p>
-                            <p class="order_count p-0 my-2"><span class="px-2 m-0 bg-slate-200 cursor-pointer">-</span><span class="px-3 m-0 bg-slate-400">1</span><span class="px-2 m-0 bg-slate-200 cursor-pointer">+</span></p>
-                            <button class="remove_btn"><i class="fa-solid fa-trash-can mr-2"></i>Sil</button>
-                            <span class="order_price absolute right-0 top-4 text-lg font-medium">10500 azn</span>
-                        </div>
-                    </div> -->
-                </div>
+                <div class="order_list p-4 gap-4"></div>
                 <div class="purchase">
                     <p class="flex justify-between items-center px-5">
                         <span class="text-2xl">Cem:</span>
                         <span class="totalAmount text-xl text-[#FF0000] font-bold"></span>
                     </p>
-                    <button class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">Sifarisi tamamla</button>
+                    <button
+                        class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">Sifarisi
+                        tamamla</button>
                 </div>
-            </div>    
+            </div>
         </div>
 
-        <div class="container w-[1200px]">
+        <div class="container m-auto">
             <section id="carsBox">
                 <div class="cars flex gap-5 justify-center flex-wrap"></div>
+                <div class="more flex justify-center">
+                    <button
+                        class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium"
+                        onclick="ShowMore()">Show more
+                        <i class="fa-solid fa-angles-right ml-3"></i>
+                    </button>
+                </div>
             </section>
         </div>
     </main>

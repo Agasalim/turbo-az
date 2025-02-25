@@ -1,0 +1,199 @@
+.topLinks {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+.topLinks ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    text-decoration: none;
+    flex-wrap: wrap;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navlinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navlinks ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+.rightLinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* Filter Section */
+#filter {
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#filter select, #filter input {
+    height: 40px;
+    margin-bottom: 10px;
+    width: 180px;
+}
+.search_box {position: relative;}
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+}
+/* Basket */
+#sebet {
+    z-index: 999;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.5s ease;
+    position: fixed;
+    max-width: 100%;
+}
+.order_list {
+    display: flex;
+    flex-direction: column;
+}
+.order_img img {
+    max-width: 100%;
+    height: auto;
+}
+.order_count span {
+    display: inline-block;
+}
+/* Cars Section */
+.cars {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.car {overflow: hidden;}
+.car_img img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.car .car_info {
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 1rem Rubik;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* Car Details */
+.model_info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.more_info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.car_img, .model_img {position: relative;}
+.model_img {width: 100%;}
+.model_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.model_img i, .car_img i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 1.5rem;
+    transition: .3s;
+    cursor: pointer;
+    color: #f10b0b;
+    transition: color 0.3s ease;
+}
+.car_img_small {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    #filter {justify-content: center;}
+    .more_info {flex-direction: column;}
+    .model_img {width: 100%;}
+    .car_details .car_details {width: 100%;}
+}
+@media (max-width: 768px) {
+    .topLinks ul {
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+    .navlinks {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .navlinks ul {
+        width: 100%;
+        justify-content: center;
+    }
+    .navbar {flex-direction: column;}
+    .rightLinks {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    #sebet {width: 90%;}
+    .car {max-width: 100%;}
+}
+@media (max-width: 576px) {
+    .topLinks {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .topLinks ul {justify-content: center;}
+    .navlinks ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    #filter select, #filter input {width: 100%;}
+    .search_box {width: 100%;}
+    .search_input {width: 100% !important;}
+    .car_img_small {flex-direction: column;}
+    .model_info {justify-content: center;}
+}
+@media (max-width: 400px) {
+    .car_info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .car .car_color {width: 100%;}
+    .car_img_small img {
+        width: 100%;
+        height: auto;
+    }
+}
