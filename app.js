@@ -45,17 +45,15 @@ sebet.style.right = "-400px"
 shoppingCard.onclick = () => sebet.style.right = "0"
 closeBasket.onclick = () => sebet.style.right = "-400px"
 
+let reqem = 4;
 showCars();
 markaList();
 minilSecim();
 maxilSecim();
-let reqem = 4;
-function showCars(carList = carModels){ //! reqem - islemir, log-da error verir, kodda da islemir
-    debugger
-    // console.log(typeof reqem);    
+function showCars(carList = carModels){
     cars.innerHTML ="";
     carList
-    // .slice(0, 4)
+    .slice(0, reqem)
     .map((masin) => {
         cars.innerHTML +=`
         <div class="car">
@@ -77,7 +75,9 @@ function showCars(carList = carModels){ //! reqem - islemir, log-da error verir,
     })
 }
 function ShowMore(){
-    reqem++;
+    reqem = reqem + 4;
+    // if(reqem >= carList.length) document.querySelector(".more").style.display = "none" //! islemir
+    // else document.querySelector(".more").style.display = "block" //! islemir
     showCars();
 }
 function showSebet(){
