@@ -17,7 +17,7 @@
 <body>
 
     <div class="topHeading">
-        <div class="container m-auto">
+        <div class="container">
             <div class="topLinks flex items-center">
                 <ul>
                     <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
@@ -28,39 +28,36 @@
                             target="_blank">Boss.az</a></li>
                 </ul>
                 <ul>
-                    <li>
-                        <p>Destek: (012) 505-77-55</p>
-                    </li>
-                    <li>
-                        <p>Yardim</p>
-                    </li>
-                    <li>
-                        <p>RU</p>
-                    </li>
+                    <li><p>Destek: (012) 505-77-55</p></li>
+                    <li><p>Yardim</p></li>
+                    <li><p>RU</p></li>
                     <li><i class="fa-solid fa-heart"></i> Secilmisler</li>
                     <li><i class="fa-solid fa-user"></i> Giris</li>
                 </ul>
             </div>
         </div>
     </div>
+    
     <nav>
-        <div class="container m-auto">
-            <div class="navbar relative flex items-center justify-between">
-                <a href="#" class="logo mr-4 flex items-center">TURBO.AZ</a>
-                <div class="navlinks relative flex items-center gap-5">
-                    <ul class="navlinks_list flex items-center gap-3">
-                        <li><a href="">Butun elanlar</a></li>
-                        <li><a href="">Avtosalonlar</a></li>
-                        <li><a href="">Moto</a></li>
-                        <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
-                    </ul>
-                    <div class="rightLinks flex">
-                        <button class="elan_elave">+Yeni elan</button>
-                        <div><i id="shoppingCard"
-                                class="fa-solid fa-cart-shopping cursor-pointer hover:text-[#80D128] p-2 transition"></i>
-                        </div>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="#">TURBO.AZ</a>
+                </div>
+                <ul class="navlinks">
+                    <li><a href="">Butun elanlar</a></li>
+                    <li><a href="">Avtosalonlar</a></li>
+                    <li><a href="">Moto</a></li>
+                    <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
+                </ul>
+                <div class="rightLinks">
+                    <button class="elan_elave">Yeni elan</button>
+                    <div><i id="shoppingCard"
+                            class="fa-solid fa-cart-shopping"></i>
                     </div>
-                    <div class="menu_bar"><i class="fa-solid fa-bars text-2xl text-white"></i></div>
+                </div>
+                <div class="menu_bar">
+                    <i class="fa-solid fa-bars" onclick="menuToggle()"></i>
                 </div>
             </div>
         </div>
@@ -70,10 +67,6 @@
         <div class="container m-auto">
             <section id="filter" class="flex flex-wrap gap-3 py-7 justify-center">
                 <select id="marka" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
-                <div class="flex gap-3">
-                    <input type="number" class="min_qiymet rounded-[7px] p-2 mb-3" placeholder="Min. qiymet">
-                    <input type="number" class="max_qiymet rounded-[7px] p-2 mb-3" placeholder="Max. qiymet">
-                </div>
                 <select id="qiymetSort" class="p-2 mb-3 rounded-[7px] text-slate-600">
                     <option value="sort" hidden selected>Qiymeti sirala</option>
                     <option value="sifirla">Sifirla</option>
@@ -83,6 +76,10 @@
                 <div class="flex gap-3">
                     <select id="minIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
                     <select id="maxIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
+                </div>
+                <div class="flex gap-3">
+                    <input type="number" class="min_qiymet rounded-[7px] p-2 mb-3" placeholder="Min. qiymet">
+                    <input type="number" class="max_qiymet rounded-[7px] p-2 mb-3" placeholder="Max. qiymet">
                 </div>
                 <div class="search_box relative">
                     <input type="text" class="search_input w-[250px] p-2 mb-3 rounded-[7px] outline-none"

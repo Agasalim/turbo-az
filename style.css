@@ -1,35 +1,97 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    background-color: #eee;
+    font-family: "Roboto", sans-serif;
 }
-body {background-color: #eee;}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/** TOP LINKS */
+.topHeading {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
 .topLinks {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
-}
-.topLinks a, .topLinks p {
-    font: 400 1rem Rubik;
-    color: #4b5563;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .topLinks ul {
     display: flex;
-    gap: 30px;
+    align-items: center;
     list-style: none;
-    text-decoration: none;
+    gap: 15px;
 }
+.topLinks ul li a,
+.topLinks ul li p {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.topLinks ul li a:hover {color: red;}
+.topLinks ul li i {
+    margin-right: 5px;
+    color: #333;
+}
+
+/** NAVIGATION */
 nav {
     background-color: red;
     padding: 15px 0;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-nav a {
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+nav .logo a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.3s;
+    margin-right: 10px;
+}
+.navbar ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+.navbar ul li{list-style: none;}
+.navlinks a{
+    display: inline-block;
+    font:500 1rem "Roboto" serif;
     text-decoration: none;
     color: white;
-    font: 400 1rem Rubik;
+    transition: color 0.3s;
+    text-align: center;
 }
-.logo {font-weight: 500;}
-.topLinks a {text-decoration: none;}
+.navlinks a:hover{color: black;}
+.rightLinks {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.rightLinks i {
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.rightLinks i:hover {transform: scale(1.1);}
+.menu_bar{display: none;}
+.menu_bar i {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 .elan_elave {
     background-color: #80D128;
     border: 1px solid #80D128;
@@ -49,11 +111,6 @@ nav a {
 .elan_elave:active {
     background-color: #62b904;
     border-color: #62b904;
-}
-.menu_bar{display: none; cursor: pointer;}
-.fa-cart-shopping {
-    color: white;
-    font-size: 1.5rem;
 }
 
 /** FILTER SECTION */
@@ -211,37 +268,45 @@ input[type="number"]::-webkit-outer-spin-button{
     opacity: 0.8;
     margin-left: 10px;
 }
-@media (max-width:991px){
-    .menu_bar{display: block;}
-    .topLinks{flex-direction: column;}
-    .topLinks ul{flex-direction: column;}
+@media (max-width: 1024px) {
+    .container {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    .topHeading{padding: 10px 5%;}
+    .navbar {padding:0 5%;}
+    .rightLinks {gap: 10px;}
 }
-@media (max-width:768px) {
-    /* nav{overflow: hidden;} */
-    .navlinks ul{
-        display: block;
-        display: none;
+@media (max-width:768px){
+    .container {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    .topLinks {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .topLinks ul {gap: 7px;}
+    .navbar ul{
         position: absolute;
         top: 100%;
+        left: 0;
         right: 0;
-        padding: 15px 0;
-        margin-top: 15px;
-        z-index: 888;
-        flex-direction: column;
-        background-color: red;
-        gap: 0;
-    }
-    .navlinks ul li{
-        display: block;
         width: 100%;
-        margin: 0;
+        padding:0 5%;
+        background-color: red;
+        align-items: baseline;
+        gap: 0;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 999;
+        transition: max-height 0.5s ease-in-out;
     }
-    .navlinks ul a{
-        text-align: left;
+    .navbar ul li a{
         display: block;
-        padding: 10px 20px;
-        border-top: 1px solid #80D128;
-        transition: .3s;
+        text-align: left;
+        padding: 10px 0;
     }
-    .navlinks ul a:hover{background-color: #80D128;}
+    .menu_bar{display: block;}
 }

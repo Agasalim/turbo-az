@@ -14,6 +14,12 @@ let carModels = [
     { id: 13, marka: 'Honda', qiymet: '18 500', model: 'Civic', mator: '1.8', il: '2017', reng: 'cyan', img: 'https://turbo.azstatic.com/uploads/full/2023%2F03%2F29%2F18%2F06%2F09%2F1dc0eed8-15d4-46f9-abf5-0b772be61d2d%2F98117_r2JD4f3tCYHUBNquO-VTdQ.jpg'},
     { id: 14, marka: 'Volkswagen', qiymet: '23 200', model: 'Golf', mator: '2.0', il: '2019', reng: 'white', img: 'https://turbo.azstatic.com/uploads/full/2023%2F02%2F17%2F15%2F03%2F28%2F97566bce-3bcb-43ff-8c96-5274fdf59360%2F74622_ZZd9ojx9ZyTk5EOyx7D3wA.jpg'}
 ]
+let navLinks = document.querySelector(".navlinks");
+navLinks.style.height = "0px";
+function menuToggle(){
+    if(navLinks.style.height == "0px") navLinks.style.height = "200px"
+    else navLinks.style.height = "0px"
+}
 let cars = document.querySelector(".cars")
 let carsBox = document.querySelector("#carsBox")
 let marka = document.querySelector("#marka");
@@ -29,17 +35,7 @@ let sebet = document.querySelector("#sebet");
 let orderList = document.querySelector(".order_list");
 let totalAmount = document.querySelector(".totalAmount");
 let navlinksList = document.querySelector(".navlinks_list");
-let menuBar = document.querySelector(".menu_bar");
 let sebetList = [];
-
-menuBar.onclick = function(){
-    if(navlinksList.style.display == "none"){
-        navlinksList.style.display = "flex"
-    }
-    else{
-        navlinksList.style.display = "none"
-    }
-}
 
 sebet.style.right = "-400px"
 shoppingCard.onclick = () => sebet.style.right = "0"
