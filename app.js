@@ -14,14 +14,9 @@ let carModels = [
     { id: 13, marka: 'Honda', qiymet: '18 500', model: 'Civic', mator: '1.8', il: '2017', reng: 'cyan', img: 'https://turbo.azstatic.com/uploads/full/2023%2F03%2F29%2F18%2F06%2F09%2F1dc0eed8-15d4-46f9-abf5-0b772be61d2d%2F98117_r2JD4f3tCYHUBNquO-VTdQ.jpg'},
     { id: 14, marka: 'Volkswagen', qiymet: '23 200', model: 'Golf', mator: '2.0', il: '2019', reng: 'white', img: 'https://turbo.azstatic.com/uploads/full/2023%2F02%2F17%2F15%2F03%2F28%2F97566bce-3bcb-43ff-8c96-5274fdf59360%2F74622_ZZd9ojx9ZyTk5EOyx7D3wA.jpg'}
 ]
-let navLinks = document.querySelector(".navlinks");
-navLinks.style.maxHeight = "0px";
-function menuToggle(){
-    if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
-    else navLinks.style.maxHeight = "0px"
-}
-let cars = document.querySelector(".cars")
-let more = document.querySelector(".more")
+let sebetList = [];
+let cars = document.querySelector(".cars");
+let more = document.querySelector(".more");
 let marka = document.querySelector("#marka");
 let minQiymet = document.querySelector(".min_qiymet");
 let maxQiymet = document.querySelector(".max_qiymet");
@@ -35,12 +30,37 @@ let sebet = document.querySelector("#sebet");
 let orderList = document.querySelector(".order_list");
 let totalAmount = document.querySelector(".totalAmount");
 let navlinksList = document.querySelector(".navlinks_list");
-let sebetList = [];
+let navLinks = document.querySelector(".navlinks");
+let filterSection = document.querySelector("#filter");
+let elanElave = document.querySelector("#elanElave");
+let elanBtn =document.querySelector(".elan_btn");
 
+navLinks.style.maxHeight = "0px";
+function menuToggle(){
+    if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
+    else navLinks.style.maxHeight = "0px"
+}
+filterSection.style.left = "-100%"
+function filterToggle(){
+    if(filterSection.style.left == "-100%") filterSection.style.left = "0"
+    else filterSection.style.left = "-100%"
+}
+elanElave.style.left = "-100%"
+function elanElaveEt(){
+    if(elanElave.style.left == "-100%") {
+        elanElave.style.left = "0";
+        elanBtn.textContent = "Bagla"
+        elanBtn.style.background = "#2ba3f3"
+    }
+    else{
+        elanElave.style.left = "-100%";
+        elanBtn.textContent = "Elan"
+        elanBtn.style.background = "#80D128"
+    }
+}
 sebet.style.right = "-400px"
 shoppingCard.onclick = () => sebet.style.right = "0"
 closeBasket.onclick = () => sebet.style.right = "-400px"
-
 let reqem = 4;
 showCars();
 markaList();

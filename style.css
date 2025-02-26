@@ -39,7 +39,7 @@ body {
 }
 
 /** NAVIGATION */
-nav {
+header {
     background-color: red;
     padding: 15px 0;
     width: 100%;
@@ -62,7 +62,6 @@ nav .logo a {
 .navlinks{
     display: flex;
     gap: 20px;
-    /* padding: 20px 0; */
     align-items: center;
     transition: all 0.4s ease-in-out;
 }
@@ -87,17 +86,17 @@ nav .logo a {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-.rightLinks i:hover {transform: scale(1.1);}
+.rightLinks i:hover {transform: scale(1.4);}
 .menu_bar{display: none;}
 .menu_bar i {
     color: white;
     font-size: 28px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
 }
-.elan_elave {
+.elan_btn {
     background-color: #80D128;
-    border: 1px solid #80D128;
+    border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
@@ -107,17 +106,26 @@ nav .logo a {
     transition: .3s;
     width: 100px;
 }
-.elan_elave:hover {
+.elan_btn:hover {
     background-color: #62b904;
     border-color: #62b904;
 }
-.elan_elave:active {
+.elan_btn:active {
     background-color: #62b904;
     border-color: #62b904;
 }
 
 /** FILTER SECTION */
-header{background-color: #e6e4e4;}
+#filter{
+    background-color: #e6e4e4;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    z-index: 888;
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button{
     -webkit-appearance: none;
@@ -132,6 +140,30 @@ input[type="number"]::-webkit-outer-spin-button{
     transform: translateY(-50%);
     color: #9ca3af;
 }
+
+/** ELAN ELAVE ET*/
+#elanElave{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: #dde2eb;
+    transition: all .3s ease-in-out;
+    z-index: 777;
+}
+.form_btns {
+    gap: 10px; 
+    display: flex; 
+    align-items: center;
+}
+.form_btns button{
+    padding: 8px 20px;
+    border-radius: 10px;
+    color: white;
+    transition: .3s;
+}
+.form_btns button:hover{background-color: #23abfa;}
 
 /** BASKET */
 #sebet{
@@ -281,7 +313,7 @@ input[type="number"]::-webkit-outer-spin-button{
     .rightLinks {gap: 10px;}
 }
 @media (max-width:768px){
-    .topHeading .container, nav .container, header .container {
+    .topHeading .container, header .container{
         width: 100% !important;
         padding: 0 !important;
     }

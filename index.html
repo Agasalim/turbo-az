@@ -42,9 +42,9 @@
         </div>
     </div>
     
-    <nav>
+    <header class="relative">
         <div class="container">
-            <div class="navbar">
+            <nav class="navbar">
                 <div class="logo">
                     <a href="#">TURBO.AZ</a>
                 </div>
@@ -55,43 +55,57 @@
                     <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
                 </ul>
                 <div class="rightLinks">
-                    <button class="elan_elave">Yeni elan</button>
-                    <div><i id="shoppingCard"
-                            class="fa-solid fa-cart-shopping"></i>
+                    <button class="elan_btn" onclick="elanElaveEt()">Yeni elan</button>
+                    <div class="filter_btn">
+                        <i class="fa-solid fa-filter" onclick="filterToggle()"></i>
                     </div>
+                    <div><i id="shoppingCard"class="fa-solid fa-cart-shopping"></i></div>
                 </div>
                 <div class="menu_bar">
                     <i class="fa-solid fa-bars" onclick="menuToggle()"></i>
                 </div>
+            </nav>
+        </div>
+        <section id="filter" class="flex flex-wrap gap-3 p-5 justify-center">
+            <select id="marka" class="p-2 rounded-[7px] text-slate-600"></select>
+            <select id="qiymetSort" class="p-2 rounded-[7px] text-slate-600">
+                <option value="sort" hidden selected>Qiymeti sirala</option>
+                <option value="sifirla">Sifirla</option>
+                <option value="ucuzdan">Ucuz-Baha</option>
+                <option value="bahadan">Baha-Ucuz</option>
+            </select>
+            <div class="flex gap-3">
+                <select id="minIl" class="p-2 rounded-[7px] text-slate-600"></select>
+                <select id="maxIl" class="p-2 rounded-[7px] text-slate-600"></select>
             </div>
-        </div>
-    </nav>
-
-    <header class="relative">
-        <div class="container">
-            <section id="filter" class="flex flex-wrap gap-3 py-7 justify-center">
-                <select id="marka" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
-                <select id="qiymetSort" class="p-2 mb-3 rounded-[7px] text-slate-600">
-                    <option value="sort" hidden selected>Qiymeti sirala</option>
-                    <option value="sifirla">Sifirla</option>
-                    <option value="ucuzdan">Ucuz-Baha</option>
-                    <option value="bahadan">Baha-Ucuz</option>
-                </select>
-                <div class="flex gap-3">
-                    <select id="minIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
-                    <select id="maxIl" class="p-2 mb-3 rounded-[7px] text-slate-600"></select>
-                </div>
-                <div class="flex gap-3">
-                    <input type="number" class="min_qiymet rounded-[7px] p-2 mb-3" placeholder="Min. qiymet">
-                    <input type="number" class="max_qiymet rounded-[7px] p-2 mb-3" placeholder="Max. qiymet">
-                </div>
-                <div class="search_box relative">
-                    <input type="text" class="search_input w-[250px] p-2 mb-3 rounded-[7px] outline-none"
-                        placeholder="Axtaris-Marka,Model,Motor">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-            </section>
-        </div>
+            <div class="flex gap-3">
+                <input type="number" class="min_qiymet rounded-[7px] p-2" placeholder="Min. qiymet">
+                <input type="number" class="max_qiymet rounded-[7px] p-2" placeholder="Max. qiymet">
+            </div>
+            <div class="search_box relative">
+                <input type="text" class="search_input w-[250px] p-2 rounded-[7px] outline-none"
+                    placeholder="Axtaris-Marka,Model,Motor">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </section>
+        <section id="elanElave">
+            <div class="container max-w-[1200px] m-auto">
+                <form class="elanInfo py-5">
+                    <div class="add_inputs flex flex-wrap justify-center gap-3 mb-3">
+                        <input type="text" class="p-3 rounded-lg" placeholder="marka">
+                        <input type="text" class="p-3 rounded-lg" placeholder="model">
+                        <input type="number" class="p-3 rounded-lg" placeholder="motor hecmi">
+                        <input type="number" class="p-3 rounded-lg" placeholder="qiymet">
+                        <input type="text" class="p-3 rounded-lg" placeholder="reng">
+                        <input type="text" class="p-3 rounded-lg" placeholder="sekil">
+                    </div>
+                    <div class="form_btns">
+                        <button class="elan_ver bg-[#80D128]">Elave et</button>
+                        <!-- <button class="elan_bagla bg-[#FF0000]" onclick="elanClose()">Bagla</button> -->
+                    </div>
+                </form>
+            </div>
+        </section>
     </header>
 
     <main class="relative">
@@ -106,8 +120,8 @@
                         <span class="totalAmount text-xl text-[#FF0000] font-bold"></span>
                     </p>
                     <button
-                        class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">Sifarisi
-                        tamamla</button>
+                        class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">
+                        Sifarisi tamamla</button>
                 </div>
             </div>
         </div>
