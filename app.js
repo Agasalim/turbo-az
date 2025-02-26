@@ -34,23 +34,47 @@ let navLinks = document.querySelector(".navlinks");
 let filterSection = document.querySelector("#filter");
 let elanElave = document.querySelector("#elanElave");
 let elanBtn =document.querySelector(".elan_btn");
-
+let markaName = document.querySelector(".marka_name");
+let modelName = document.querySelector(".model_name");
+let motorHecmi = document.querySelector(".motor_hecmi");
+let masinQiymet = document.querySelector(".masin_qiymet");
+let masinIli = document.querySelector(".masin_ili");
+let masinRengi = document.querySelector(".masin_rengi");
+let sekilLink = document.querySelector(".sekil_linki");
+// debugger
 navLinks.style.maxHeight = "0px";
+filterSection.style.left = "-100%"
+elanElave.style.left = "-100%"
+sebet.style.right = "-400px"
+let reqem = 4;
+showCars();
+markaList();
+minilSecim();
+maxilSecim();
+function daxilEt(){
+    debugger
+    let newObj = {id: carModels.length + 1, marka: `${markaName.value}`, qiymet: `${masinQiymet.value}`,
+                    model: `${modelName.value}`, mator: `${motorHecmi.value}`, il: `${masinIli.value}`, 
+                    reng: `${masinRengi.value}`, img: `${sekilLink.value}`}
+    carModels = [newObj, ...carModels]
+    console.log(carModels);
+    showCars();
+    console.log(cars.innerHTML);
+}
 function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
     else navLinks.style.maxHeight = "0px"
 }
-filterSection.style.left = "-100%"
 function filterToggle(){
     if(filterSection.style.left == "-100%") filterSection.style.left = "0"
     else filterSection.style.left = "-100%"
 }
-elanElave.style.left = "-100%"
 function elanElaveEt(){
     if(elanElave.style.left == "-100%") {
         elanElave.style.left = "0";
         elanBtn.textContent = "Bagla"
         elanBtn.style.background = "#2ba3f3"
+        markaName.focus();
     }
     else{
         elanElave.style.left = "-100%";
@@ -58,14 +82,8 @@ function elanElaveEt(){
         elanBtn.style.background = "#80D128"
     }
 }
-sebet.style.right = "-400px"
 shoppingCard.onclick = () => sebet.style.right = "0"
 closeBasket.onclick = () => sebet.style.right = "-400px"
-let reqem = 4;
-showCars();
-markaList();
-minilSecim();
-maxilSecim();
 function showCars(carList = carModels){
     debugger
     cars.innerHTML ="";
