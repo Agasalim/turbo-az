@@ -15,10 +15,10 @@ let carModels = [
     { id: 14, marka: 'Volkswagen', qiymet: '23 200', model: 'Golf', mator: '2.0', il: '2019', reng: 'white', img: 'https://turbo.azstatic.com/uploads/full/2023%2F02%2F17%2F15%2F03%2F28%2F97566bce-3bcb-43ff-8c96-5274fdf59360%2F74622_ZZd9ojx9ZyTk5EOyx7D3wA.jpg'}
 ]
 let navLinks = document.querySelector(".navlinks");
-navLinks.style.height = "0px";
+navLinks.style.maxHeight = "0px";
 function menuToggle(){
-    if(navLinks.style.height == "0px") navLinks.style.height = "200px"
-    else navLinks.style.height = "0px"
+    if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
+    else navLinks.style.maxHeight = "0px"
 }
 let cars = document.querySelector(".cars")
 let carsBox = document.querySelector("#carsBox")
