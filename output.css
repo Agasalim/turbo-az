@@ -668,6 +668,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -791,6 +795,24 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#c00404\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 4 4 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[red-700\] {
+  background-color: red-700;
 }
 
 .object-cover {

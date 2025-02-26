@@ -73,11 +73,19 @@ function showCars(carList = carModels){
             </div>
         </div>`
     })
+    if(reqem < carList.length){
+        cars.innerHTML += `
+            <div class="more flex justify-center">
+                <button
+                    class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium"
+                    onclick="ShowMore()">Show more
+                    <i class="fa-solid fa-angles-right ml-3"></i>
+                </button>
+            </div>`
+    }
 }
 function ShowMore(){
     reqem = reqem + 4;
-    // if(reqem >= carList.length) document.querySelector(".more").style.display = "none" //! islemir
-    // else document.querySelector(".more").style.display = "block" //! islemir
     showCars();
 }
 function showSebet(){
