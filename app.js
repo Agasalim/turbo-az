@@ -41,7 +41,6 @@ let masinQiymet = document.querySelector(".masin_qiymet");
 let masinIli = document.querySelector(".masin_ili");
 let masinRengi = document.querySelector(".masin_rengi");
 let sekilLink = document.querySelector(".sekil_linki");
-// debugger
 navLinks.style.maxHeight = "0px";
 filterSection.style.left = "-100%"
 elanElave.style.left = "-100%"
@@ -57,9 +56,7 @@ function daxilEt(){
                     model: `${modelName.value}`, mator: `${motorHecmi.value}`, il: `${masinIli.value}`, 
                     reng: `${masinRengi.value}`, img: `${sekilLink.value}`}
     carModels = [newObj, ...carModels]
-    console.log(carModels);
     showCars();
-    console.log(cars.innerHTML);
 }
 function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
@@ -193,6 +190,8 @@ axtaris.oninput = function() {
     showCars(filteredCars);
 }
 function showDetails(id){
+    more.innerHTML = ""
+    cars.innerHTML = ""
     let carDetail = carModels.find(masin => masin.id==id)
     cars.innerHTML =`
     <div class="car_details">
@@ -204,11 +203,11 @@ function showDetails(id){
             <h4 class="car_color"> ${carDetail.reng}</h4>
         </div>
         <div class="more_info">
-            <div class="model_img relative w-[60%]">
-                <img class="rounded-[20px] object-cover" src="${carDetail.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
+            <div class="model_img relative mb-5 lg:w-[60%] md:w-[90%]">
+                <img class="rounded-[20px] object-cover w-full" src="${carDetail.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
                 <i class="fa-regular fa-heart absolute" onclick="sec(this)"></i>
             </div>
-            <div class="car_details bg-slate-300 w-[37%] border-2 p-5 rounded-[20px]">
+            <div class="car_details border p-5 rounded-[20px] lg:w-[35%] md:w-[90%]">
                 <h3 class="car_price">Qiymet: ${carDetail.qiymet} AZN</h3>
                 <div class="car_img_small">
                     <img src="${carDetail.img}"/>
