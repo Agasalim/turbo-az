@@ -51,12 +51,21 @@ markaList();
 minilSecim();
 maxilSecim();
 function daxilEt(){
-    debugger
     let newObj = {id: carModels.length + 1, marka: `${markaName.value}`, qiymet: `${masinQiymet.value}`,
                     model: `${modelName.value}`, mator: `${motorHecmi.value}`, il: `${masinIli.value}`, 
                     reng: `${masinRengi.value}`, img: `${sekilLink.value}`}
+    markaName.value = ""
+    modelName.value = ""
+    motorHecmi.value = ""
+    masinQiymet.value = ""
+    masinIli.value = ""
+    masinRengi.value = ""
+    sekilLink.value = ""
     carModels = [newObj, ...carModels]
     showCars();
+    elanElave.style.left = "-100%";
+    elanBtn.textContent = "Elan"
+    elanBtn.style.background = "#80D128"
 }
 function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
@@ -195,14 +204,18 @@ function showDetails(id){
     let carDetail = carModels.find(masin => masin.id==id)
     cars.innerHTML =`
     <div class="car_details">
-        <div class="model_info">
-            <i class="fa-solid fa-left-long" onclick="goBack()"></i>
-            <h4 class="car_model">${carDetail.marka} ${carDetail.model}</h4>
-            <h4 class="car_year"> ${carDetail.il},</h4>
-            <h4 class="engine"> ${carDetail.mator} L,</h4>
-            <h4 class="car_color"> ${carDetail.reng}</h4>
+        <div class="model_info mb-3">
+            <i class="fa-solid fa-left-long text-2xl" onclick="goBack()"></i>
+            <div class="flex">
+                <h4 class="car_model">${carDetail.marka} ${carDetail.model}</h4>
+            </div>
+            <div class="flex">
+                <h4 class="car_year"> ${carDetail.il},</h4>
+                <h4 class="engine"> ${carDetail.mator} L,</h4>
+                <h4 class="car_color"> ${carDetail.reng}</h4>
+            </div>
         </div>
-        <div class="more_info">
+        <div class="more_info flex justify-between">
             <div class="model_img relative mb-5 lg:w-[60%] md:w-[90%]">
                 <img class="rounded-[20px] object-cover w-full" src="${carDetail.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
                 <i class="fa-regular fa-heart absolute" onclick="sec(this)"></i>
