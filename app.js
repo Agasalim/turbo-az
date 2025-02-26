@@ -21,7 +21,7 @@ function menuToggle(){
     else navLinks.style.maxHeight = "0px"
 }
 let cars = document.querySelector(".cars")
-let carsBox = document.querySelector("#carsBox")
+let more = document.querySelector(".more")
 let marka = document.querySelector("#marka");
 let minQiymet = document.querySelector(".min_qiymet");
 let maxQiymet = document.querySelector(".max_qiymet");
@@ -47,6 +47,7 @@ markaList();
 minilSecim();
 maxilSecim();
 function showCars(carList = carModels){
+    debugger
     cars.innerHTML ="";
     carList
     .slice(0, reqem)
@@ -69,15 +70,14 @@ function showCars(carList = carModels){
             </div>
         </div>`
     })
+    more.innerHTML = ""
     if(reqem < carList.length){
-        cars.innerHTML += `
-            <div class="more flex justify-center">
+        more.innerHTML += `
                 <button
                     class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium"
                     onclick="ShowMore()">Show more
                     <i class="fa-solid fa-angles-right ml-3"></i>
-                </button>
-            </div>`
+                </button>`
     }
 }
 function ShowMore(){
@@ -126,7 +126,6 @@ function countAzalt(id){
     showSebet();
 }
 function addToCard(id){
-    debugger
     let secilenMasin = carModels.find(element => element.id == id)
     let sebetdeVarmi = sebetList.find(item => item.id == id)
     if(sebetdeVarmi){

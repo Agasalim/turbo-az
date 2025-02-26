@@ -17,5 +17,22 @@ const arr = [
 
 
 TASK:
-show more
-basketdən silmə
+Masin elave etmek
+Array-in icindekiler
+1. marka:
+2. model:
+3. qiymet:
+4. mator:
+5. il:
+6. reng:
+7. img:
+8. id
+
+Elave olunanda qeyd olunacaq
+1. marka
+2. model
+3. qiymet
+4. mator
+5. il
+6. reng
+7. img

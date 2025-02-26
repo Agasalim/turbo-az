@@ -281,10 +281,11 @@ input[type="number"]::-webkit-outer-spin-button{
     .rightLinks {gap: 10px;}
 }
 @media (max-width:768px){
-    .container {
+    .topHeading .container, nav .container, header .container {
         width: 100% !important;
         padding: 0 !important;
     }
+    main .container{width: 90%; margin: auto;}
     .topLinks {
         flex-direction: column;
         align-items: center;
@@ -314,4 +315,8 @@ input[type="number"]::-webkit-outer-spin-button{
         padding: 10px 0;
     }
     .menu_bar{display: block;}
+    .car{width: 100%;}
+    .car_img img {
+        height: 250px;
+    }
 }
