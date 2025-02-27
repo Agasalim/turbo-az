@@ -32,6 +32,7 @@ let totalAmount = document.querySelector(".totalAmount");
 let navlinksList = document.querySelector(".navlinks_list");
 let navLinks = document.querySelector(".navlinks");
 let filterSection = document.querySelector("#filter");
+let filterBtn =document.querySelector(".fa-filter");
 let elanElave = document.querySelector("#elanElave");
 let elanBtn =document.querySelector(".elan_btn");
 let markaName = document.querySelector(".marka_name");
@@ -78,12 +79,16 @@ function menuToggle(){
     else navLinks.style.maxHeight = "0px"
 }
 function filterToggle() {
-    if (filterSection.style.maxHeight == "0px" || filterSection.style.maxHeight == "") {
+    if (filterSection.style.maxHeight === "0px" || filterSection.style.maxHeight == "") {
         filterSection.style.maxHeight = filterSection.scrollHeight + "px"; //elementin tam göstərilməsi üçün lazım olan real hündürlükdür.
     } 
     else filterSection.style.maxHeight = "0px";
 }
-
+document.addEventListener("click", function(event) {
+    if(!filterSection.contains(event.target) && !filterBtn.contains(event.target)){ // filterBtn de elave etmek sertdir
+        filterSection.style.maxHeight = "0px"
+    }
+});
 function elanElaveEt(){
     if(elanElave.style.maxHeight == "0px" || elanElave.style.maxHeight == "") {
         elanElave.style.maxHeight = elanElave.scrollHeight + "px";
@@ -97,8 +102,18 @@ function elanElaveEt(){
         elanBtn.style.background = "#80D128"
     }
 }
+document.addEventListener("click", function(event){
+    if(!elanElave.contains(event.target) && !elanBtn.contains(event.target)){
+        elanElave.style.maxHeight = "0px";
+        elanBtn.textContent = "Elan"
+        elanBtn.style.background = "#80D128"
+    }
+})
 shoppingCard.onclick = () => sebet.style.right = "0"
 closeBasket.onclick = () => sebet.style.right = "-400px"
+document.addEventListener("click", function(event){
+    if(!sebet.contains(event.target) && !shoppingCard.contains(event.target)) sebet.style.right = "-400px"
+})
 function showCars(carList = carModels){
     debugger
     cars.innerHTML ="";
