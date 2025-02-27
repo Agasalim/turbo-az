@@ -42,8 +42,8 @@ let masinIli = document.querySelector(".masin_ili");
 let masinRengi = document.querySelector(".masin_rengi");
 let sekilLink = document.querySelector(".sekil_linki");
 navLinks.style.maxHeight = "0px";
-filterSection.style.left = "-100%"
-elanElave.style.left = "-100%"
+filterSection.style.maxHeight = "0px"
+elanElave.style.maxHeight = "0px"
 sebet.style.right = "-400px"
 let reqem = 4;
 showCars();
@@ -77,19 +77,22 @@ function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
     else navLinks.style.maxHeight = "0px"
 }
-function filterToggle(){
-    if(filterSection.style.left == "-100%") filterSection.style.left = "0"
-    else filterSection.style.left = "-100%"
+function filterToggle() {
+    if (filterSection.style.maxHeight == "0px" || filterSection.style.maxHeight == "") {
+        filterSection.style.maxHeight = filterSection.scrollHeight + "px"; //elementin tam göstərilməsi üçün lazım olan real hündürlükdür.
+    } 
+    else filterSection.style.maxHeight = "0px";
 }
+
 function elanElaveEt(){
-    if(elanElave.style.left == "-100%") {
-        elanElave.style.left = "0";
+    if(elanElave.style.maxHeight == "0px" || elanElave.style.maxHeight == "") {
+        elanElave.style.maxHeight = elanElave.scrollHeight + "px";
         elanBtn.textContent = "Bagla"
         elanBtn.style.background = "#2ba3f3"
         markaName.focus();
     }
     else{
-        elanElave.style.left = "-100%";
+        elanElave.style.maxHeight = "0px";
         elanBtn.textContent = "Elan"
         elanBtn.style.background = "#80D128"
     }

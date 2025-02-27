@@ -148,10 +148,12 @@ input[type="number"]::-webkit-outer-spin-button{
     width: 100%;
     left: 0;
     right: 0;
+    overflow: hidden;
     background-color: #dde2eb;
     transition: all .3s ease-in-out;
     z-index: 777;
 }
+#elanElave input:focus{outline: 1px solid #1878f5;}
 .form_btns {
     gap: 10px; 
     display: flex; 
