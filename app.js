@@ -51,21 +51,27 @@ markaList();
 minilSecim();
 maxilSecim();
 function daxilEt(){
-    let newObj = {id: carModels.length + 1, marka: `${markaName.value}`, qiymet: `${masinQiymet.value}`,
-                    model: `${modelName.value}`, mator: `${motorHecmi.value}`, il: `${masinIli.value}`, 
-                    reng: `${masinRengi.value}`, img: `${sekilLink.value}`}
-    markaName.value = ""
-    modelName.value = ""
-    motorHecmi.value = ""
-    masinQiymet.value = ""
-    masinIli.value = ""
-    masinRengi.value = ""
-    sekilLink.value = ""
-    carModels = [newObj, ...carModels]
-    showCars();
-    elanElave.style.left = "-100%";
-    elanBtn.textContent = "Elan"
-    elanBtn.style.background = "#80D128"
+    if(markaName.value == "" || modelName.value == "" || motorHecmi.value == "" || 
+        masinQiymet.value == "" || masinIli.value == "" || masinRengi.value == "" || sekilLink.value == ""){
+            alert("Butun melumatlari daxil etmemisiz...!")
+    }
+    else{
+        let newObj = {id: carModels.length + 1, marka: `${markaName.value}`, qiymet: `${masinQiymet.value}`,
+                        model: `${modelName.value}`, mator: `${motorHecmi.value}`, il: `${masinIli.value}`, 
+                        reng: `${masinRengi.value}`, img: `${sekilLink.value}`}
+        markaName.value = ""
+        modelName.value = ""
+        motorHecmi.value = ""
+        masinQiymet.value = ""
+        masinIli.value = ""
+        masinRengi.value = ""
+        sekilLink.value = ""
+        carModels = [newObj, ...carModels]
+        showCars();
+        elanElave.style.left = "-100%";
+        elanBtn.textContent = "Elan"
+        elanBtn.style.background = "#80D128"
+    }
 }
 function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
