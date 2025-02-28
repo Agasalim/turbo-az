@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -41,7 +43,7 @@
             </div>
         </div>
     </div>
-    
+
     <header class="relative">
         <div class="container">
             <nav class="navbar">
@@ -59,7 +61,7 @@
                     <div class="filter_btn">
                         <i class="fa-solid fa-filter" onclick="filterToggle()"></i>
                     </div>
-                    <div><i id="shoppingCard"class="fa-solid fa-cart-shopping"></i></div>
+                    <div><i id="shoppingCard" class="fa-solid fa-cart-shopping"></i></div>
                 </div>
                 <div class="menu_bar">
                     <i class="fa-solid fa-bars" onclick="menuToggle()"></i>
@@ -111,6 +113,52 @@
     </header>
 
     <main class="relative">
+        <section id="slider">
+            <div class="container">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slider_1">
+                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_1">
+                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_1">
+                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_1">
+                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_1">
+                            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div thumbsSlider="" class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slider_2">
+                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_2">
+                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_2">
+                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_2">
+                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                        </div>
+                        <div class="swiper-slide slider_2">
+                            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="container m-auto">
             <div id="sebet" class="w-[400px] bg-white p-5 absolute right-0 top-0 transition-[.5s]">
                 <i id="closeBasket" class="fa-solid fa-xmark text-2xl cursor-pointer mb-3"></i>
@@ -121,8 +169,7 @@
                         <span class="text-2xl">Cem:</span>
                         <span class="totalAmount text-xl text-[#FF0000] font-bold"></span>
                     </p>
-                    <button
-                        class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">
+                    <button class="buy_btn w-full text-xl font-medium text-white p-4 mt-3 bg-[#3DB460] rounded-2xl">
                         Sifarisi tamamla</button>
                 </div>
             </div>
@@ -140,6 +187,35 @@
 
 
     <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
+            },
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
+            },
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: { swiper: swiper, },
+        });
+    </script>
 </body>
 
 </html>

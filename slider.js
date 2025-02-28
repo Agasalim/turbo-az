@@ -47,7 +47,7 @@ filterSection.style.maxHeight = "0px"
 elanElave.style.maxHeight = "0px"
 sebet.style.right = "-400px"
 let reqem = 4;
-defaultSlider()
+masinSlider()
 showCars();
 markaList();
 minilSecim();
@@ -363,23 +363,32 @@ function priceFilter() {
 maxQiymet.oninput = priceFilter;
 minQiymet.oninput = priceFilter;
 
-function defaultSlider(){
-    let sliderCars = carModels;
-    let slide1Div = document.querySelectorAll(".slider_1")
-    let randReqem = [];
-    slide1Div.forEach((tag) => {
-        debugger
-        let rand = Math.floor(Math.random() * +sliderCars.length)
-        randReqem.push(rand);
+let sliderDiv1 = document.querySelector(".slider_div1")
+let sliderDiv2 = document.querySelector(".slider_div2")
+function masinSlider(){
+    carModels.forEach(item => {
+        sliderDiv1.innerHTML = ""
+        sliderDiv1.innerHTML += `
+            <div class="swiper-slide">
+                <img src="${item.img}" />
+            </div>`
+    })
 
-        let slideImg = tag.querySelector("img")
-        slideImg.src = carModels[rand].img
-    })
-    let slide2Div = document.querySelectorAll(".slider_2")
-    let i = 0;
-    slide2Div.forEach((tag) => {
-        let slideImg = tag.querySelector("img")
-        slideImg.src = sliderCars[randReqem[i]].img
-        i++;
-    })
+    // let slide1Div = document.querySelectorAll(".slider_1")
+    // let randReqem = [];
+    // slide1Div.forEach((tag) => {
+    //     debugger
+    //     let rand = Math.floor(Math.random() * +sliderCars.length)
+    //     randReqem.push(rand);
+
+    //     let slideImg = tag.querySelector("img")
+    //     slideImg.src = carModels[rand].img
+    // })
+    // let slide2Div = document.querySelectorAll(".slider_2")
+    // let i = 0;
+    // slide2Div.forEach((tag) => {
+    //     let slideImg = tag.querySelector("img")
+    //     slideImg.src = sliderCars[randReqem[i]].img
+    //     i++;
+    // })
 }
