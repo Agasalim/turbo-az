@@ -392,3 +392,23 @@ function masinSlider(){
     //     i++;
     // })
 }
+
+// function randomSlider(){
+//     let slide1Div = document.querySelectorAll(".slider_1")
+//     let randReqem = [];
+//     slide1Div.forEach((tag) => {
+//         debugger
+//         let rand = Math.floor(Math.random() * +carModels.length)
+//         randReqem.push(rand);
+
+//         let slideImg = tag.querySelector("img")
+//         slideImg.src = carModels[rand].img
+//     })
+//     let slide2Div = document.querySelectorAll(".slider_2")
+//     let i = 0;
+//     slide2Div.forEach((tag) => {
+//         let slideImg = tag.querySelector("img")
+//         slideImg.src = carModels[randReqem[i]].img
+//         i++;
+//     })
+// }
