@@ -42,16 +42,24 @@ let masinQiymet = document.querySelector(".masin_qiymet");
 let masinIli = document.querySelector(".masin_ili");
 let masinRengi = document.querySelector(".masin_rengi");
 let sekilLink = document.querySelector(".sekil_linki");
+let menuBtn = document.querySelector(".fa-bars");
+let sliderDiv1 = document.querySelector(".slider_1");
+let sliderDiv2 = document.querySelector(".slider_2");
+let addInfo = document.querySelector(".addition_info");
+
+addInfo.style.display = "none"
 navLinks.style.maxHeight = "0px";
 filterSection.style.maxHeight = "0px"
 elanElave.style.maxHeight = "0px"
 sebet.style.right = "-400px"
 let reqem = 4;
-masinSlider()
+// randomSlider()
+// carSlider();
 showCars();
 markaList();
 minilSecim();
 maxilSecim();
+
 function daxilEt(){
     if(markaName.value == "" || modelName.value == "" || motorHecmi.value == "" || 
         masinQiymet.value == "" || masinIli.value == "" || masinRengi.value == "" || sekilLink.value == ""){
@@ -71,14 +79,21 @@ function daxilEt(){
         carModels = [newObj, ...carModels]
         showCars();
         elanElave.style.left = "-100%";
-        elanBtn.textContent = "Elan"
+        elanBtn.textContent = "Yeni elan"
         elanBtn.style.background = "#80D128"
+        addInfo.style.display = "initial"
+        setTimeout(() => {
+            addInfo.style.display = "none"
+        },3000)
     }
 }
 function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
     else navLinks.style.maxHeight = "0px"
 }
+document.addEventListener("click", function(event){
+    if(!navLinks.contains(event.target) && !menuBtn.contains(event.target)) navLinks.style.maxHeight = "0px";
+})
 function filterToggle() {
     if (filterSection.style.maxHeight === "0px" || filterSection.style.maxHeight == "") {
         filterSection.style.maxHeight = filterSection.scrollHeight + "px"; //elementin tam göstərilməsi üçün lazım olan real hündürlükdür.
@@ -99,14 +114,14 @@ function elanElaveEt(){
     }
     else{
         elanElave.style.maxHeight = "0px";
-        elanBtn.textContent = "Elan"
+        elanBtn.textContent = "Yeni elan"
         elanBtn.style.background = "#80D128"
     }
 }
 document.addEventListener("click", function(event){
     if(!elanElave.contains(event.target) && !elanBtn.contains(event.target)){
         elanElave.style.maxHeight = "0px";
-        elanBtn.textContent = "Elan"
+        elanBtn.textContent = "Yeni elan"
         elanBtn.style.background = "#80D128"
     }
 })
@@ -147,6 +162,7 @@ function showCars(carList = carModels){
                     <i class="fa-solid fa-angles-right ml-3"></i>
                 </button>`
     }
+    // carSlider(carList);
 }
 function ShowMore(){
     reqem = reqem + 4;
@@ -221,6 +237,7 @@ axtaris.oninput = function() {
         item.mator.toLowerCase().includes(searchTerm)
     );
     showCars(filteredCars);
+    carSlider(filteredCars)
 }
 function showDetails(id){
     more.innerHTML = ""
@@ -281,6 +298,7 @@ marka.onchange = function(){
     else{
         let markaCar = carModels.filter(item => item.marka==marka.value)
         showCars(markaCar);
+        carSlider(markaCar);
     }
 }
 function minilSecim(){ // illeri selecte elave etmek
@@ -362,53 +380,46 @@ function priceFilter() {
 }
 maxQiymet.oninput = priceFilter;
 minQiymet.oninput = priceFilter;
-
-let sliderDiv1 = document.querySelector(".slider_div1")
-let sliderDiv2 = document.querySelector(".slider_div2")
-function masinSlider(){
-    carModels.forEach(item => {
-        sliderDiv1.innerHTML = ""
+function randomSlider(randSlideList = carModels){ // 5 eded random secilen masinlar
+    debugger
+    sliderDiv1.innerHTML = ""
+    let randCarList = []
+    let randNum = []
+    for(let i=1; i<6; i++){
+        let rand = Math.floor(Math.random() * +randSlideList.length)
+        if(!randNum.includes(rand)){
+            randNum.push(rand)
+            randCarList.push(randSlideList[rand])
+        }
+        else i--;
+    }
+    randCarList.forEach(item => {
         sliderDiv1.innerHTML += `
             <div class="swiper-slide">
                 <img src="${item.img}" />
             </div>`
     })
-
-    // let slide1Div = document.querySelectorAll(".slider_1")
-    // let randReqem = [];
-    // slide1Div.forEach((tag) => {
-    //     debugger
-    //     let rand = Math.floor(Math.random() * +sliderCars.length)
-    //     randReqem.push(rand);
-
-    //     let slideImg = tag.querySelector("img")
-    //     slideImg.src = carModels[rand].img
-    // })
-    // let slide2Div = document.querySelectorAll(".slider_2")
-    // let i = 0;
-    // slide2Div.forEach((tag) => {
-    //     let slideImg = tag.querySelector("img")
-    //     slideImg.src = sliderCars[randReqem[i]].img
-    //     i++;
-    // })
+    sliderDiv2.innerHTML = ""
+    randCarList.forEach(item => {
+        sliderDiv2.innerHTML += `
+            <div class="swiper-slide">
+                <img src="${item.img}" />
+            </div>`
+    })
 }
-
-// function randomSlider(){
-//     let slide1Div = document.querySelectorAll(".slider_1")
-//     let randReqem = [];
-//     slide1Div.forEach((tag) => {
-//         debugger
-//         let rand = Math.floor(Math.random() * +carModels.length)
-//         randReqem.push(rand);
-
-//         let slideImg = tag.querySelector("img")
-//         slideImg.src = carModels[rand].img
-//     })
-//     let slide2Div = document.querySelectorAll(".slider_2")
-//     let i = 0;
-//     slide2Div.forEach((tag) => {
-//         let slideImg = tag.querySelector("img")
-//         slideImg.src = carModels[randReqem[i]].img
-//         i++;
-//     })
-// }
+function carSlider(allSlideList = carModels){ // butun masinlar
+    sliderDiv1.innerHTML = ""
+    allSlideList.forEach(item => {
+        sliderDiv1.innerHTML += `
+            <div class="swiper-slide">
+                <img src="${item.img}" />
+            </div>`
+    })
+    sliderDiv2.innerHTML = ""
+    allSlideList.forEach(item => {
+        sliderDiv2.innerHTML += `
+            <div class="swiper-slide">
+                <img src="${item.img}" />
+            </div>`
+    })
+}
