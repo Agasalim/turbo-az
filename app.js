@@ -51,7 +51,7 @@ addInfo.style.display = "none"
 navLinks.style.maxHeight = "0px";
 filterSection.style.maxHeight = "0px"
 elanElave.style.maxHeight = "0px"
-sebet.style.right = "-400px"
+sebet.style.right = "-450px"
 let reqem = 4;
 randomSlider()
 // carSlider();
@@ -59,6 +59,7 @@ showCars();
 markaList();
 minilSecim();
 maxilSecim();
+showSebet();
 
 function daxilEt(){
     if(markaName.value == "" || modelName.value == "" || motorHecmi.value == "" || 
@@ -91,7 +92,7 @@ function menuToggle(){
     if(navLinks.style.maxHeight == "0px") navLinks.style.maxHeight = "300px"
     else navLinks.style.maxHeight = "0px"
 }
-document.addEventListener("click", function(event){
+document.addEventListener("click", function(event){ // navbar toggle
     if(!navLinks.contains(event.target) && !menuBtn.contains(event.target)) navLinks.style.maxHeight = "0px";
 })
 function filterToggle() {
@@ -100,7 +101,7 @@ function filterToggle() {
     } 
     else filterSection.style.maxHeight = "0px";
 }
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function(event) { // filter section toggle
     if(!filterSection.contains(event.target) && !filterBtn.contains(event.target)){ // filterBtn de elave etmek sertdir
         filterSection.style.maxHeight = "0px"
     }
@@ -118,7 +119,7 @@ function elanElaveEt(){
         elanBtn.style.background = "#80D128"
     }
 }
-document.addEventListener("click", function(event){
+document.addEventListener("click", function(event){ // elan section toggle
     if(!elanElave.contains(event.target) && !elanBtn.contains(event.target)){
         elanElave.style.maxHeight = "0px";
         elanBtn.textContent = "Yeni elan"
@@ -126,10 +127,7 @@ document.addEventListener("click", function(event){
     }
 })
 shoppingCard.onclick = () => sebet.style.right = "0"
-closeBasket.onclick = () => sebet.style.right = "-400px"
-document.addEventListener("click", function(event){
-    if(!sebet.contains(event.target) && !shoppingCard.contains(event.target)) sebet.style.right = "-400px"
-})
+closeBasket.onclick = () => sebet.style.right = "-450px"
 function showCars(carList = carModels){
     cars.innerHTML ="";
     carList
@@ -169,31 +167,37 @@ function ShowMore(){
 }
 function showSebet(){
     orderList.innerHTML = ""
-    sebetList.forEach(element =>{
-        orderList.innerHTML += `
-            <div class="order_car relative flex gap-3 py-4 mt-3">
-                <div class="order_img mt-2">
-                    <img src="${element.img}" alt="sekil" class="w-32">
-                </div>
-                <div class="order_info">
-                    <h6 class="order_model_name font-medium text-xl">${element.marka}</h6>
-                    <h4 class="order_model_name font-medium text-xl">${element.model}</h4>
-                    <p class="order_color text-base">${element.reng}</p>
-                    <p class="order_count p-0 my-2">
-                        <span onclick="countAzalt(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">-</span>
-                        <span class="px-3 py-1 m-0 bg-slate-400">${element.count}</span>
-                        <span onclick="countArtir(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">+</span>
-                    </p>
-                    <button onclick="removeOrder(${element.id})" class="remove_btn"><i class="fa-solid fa-trash-can mr-2"></i>Sil</button>
-                    <span class="order_price absolute right-0 top-4 text-lg font-medium">${element.qiymet} AZN</span>
-                </div>
-            </div>`
-    })
-    toplamOdenis();
+    if(sebetList.length == 0){
+        orderList.innerHTML = `<p class="text-xl my-5">Hec bir mehsul elave edilmeyib...</p>`
+    }
+    else{
+        sebetList.forEach(element =>{
+            orderList.innerHTML += `
+                <div class="order_car relative flex gap-3 py-4 mt-3">
+                    <div class="order_img mt-2">
+                        <img src="${element.img}" alt="sekil" class="w-32">
+                    </div>
+                    <div class="order_info">
+                        <h6 class="order_model_name font-medium text-xl">${element.marka}</h6>
+                        <h4 class="order_model_name font-medium text-xl">${element.model}</h4>
+                        <p class="order_color text-base">${element.reng}</p>
+                        <p class="order_count p-0 my-2">
+                            <span onclick="countAzalt(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">-</span>
+                            <span class="px-3 py-1 m-0 bg-slate-400">${element.count}</span>
+                            <span onclick="countArtir(${element.id})" class="px-2 py-1 m-0 bg-slate-200 cursor-pointer">+</span>
+                        </p>
+                        <button onclick="removeOrder(${element.id})" class="remove_btn"><i class="fa-solid fa-trash-can mr-2"></i>Sil</button>
+                        <span class="order_price absolute right-0 top-4 text-lg font-medium">${element.qiymet} AZN</span>
+                    </div>
+                </div>`
+        })
+        toplamOdenis();
+    }
 }
 function removeOrder(id){
     let index = sebetList.findIndex(item => item.id == id)
     sebetList.splice(index, 1)
+    toplamOdenis();
     showSebet();
 }
 function countArtir(id){
@@ -211,14 +215,13 @@ function countAzalt(id){
 function addToCard(id){
     let secilenMasin = carModels.find(element => element.id == id)
     let sebetdeVarmi = sebetList.find(item => item.id == id)
-    if(sebetdeVarmi){
-        sebetdeVarmi.count++
-    }
+    if(sebetdeVarmi) sebetdeVarmi.count++
     else{
         secilenMasin = {...secilenMasin, count: 1}
         sebetList.push(secilenMasin)
     }
     showSebet();
+    sebet.style.right = "0"
 }
 function toplamOdenis(){
     totalAmount.innerHTML = ""
@@ -377,12 +380,11 @@ function priceFilter() {
 }
 maxQiymet.oninput = priceFilter;
 minQiymet.oninput = priceFilter;
-function randomSlider(){ // 5 eded random secilen masinlar
-    debugger
+function randomSlider(){ // 6 eded random secilen masinlar
     sliderDiv1.innerHTML = ""
     let randCarList = []
     let randNum = []
-    for(let i=1; i<6; i++){
+    for(let i=1; i<7; i++){
         let rand = Math.floor(Math.random() * +carModels.length)
         if(!randNum.includes(rand)){
             randNum.push(rand)
@@ -420,3 +422,4 @@ function carSlider(){ // butun masinlar
             </div>`
     })
 }
+

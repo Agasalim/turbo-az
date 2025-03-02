@@ -610,32 +610,16 @@ video {
   right: 0px;
 }
 
+.right-5 {
+  right: 1.25rem;
+}
+
 .top-0 {
   top: 0px;
 }
 
 .top-4 {
   top: 1rem;
-}
-
-.right-5 {
-  right: 1.25rem;
-}
-
-.top-5 {
-  top: 1.25rem;
-}
-
-.right-2 {
-  right: 0.5rem;
-}
-
-.top-2 {
-  top: 0.5rem;
-}
-
-.top-1 {
-  top: 0.25rem;
 }
 
 .z-\[10000\] {
@@ -650,14 +634,6 @@ video {
   margin: auto;
 }
 
-.m-3 {
-  margin: 0.75rem;
-}
-
-.m-5 {
-  margin: 1.25rem;
-}
-
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -668,9 +644,9 @@ video {
   margin-bottom: 1rem;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .mb-3 {
@@ -741,20 +717,12 @@ video {
   width: 100%;
 }
 
-.w-5 {
-  width: 1.25rem;
+.w-\[500px\] {
+  width: 500px;
 }
 
-.w-10 {
-  width: 2.5rem;
-}
-
-.w-\[\] {
-  width: ;
-}
-
-.w-\[100px\] {
-  width: 100px;
+.w-\[450px\] {
+  width: 450px;
 }
 
 .max-w-\[1200px\] {
@@ -831,6 +799,11 @@ video {
   background-color: rgb(128 209 40 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[\#8bfa15\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(139 250 21 / var(--tw-bg-opacity, 1));
+}
+
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity, 1));
@@ -849,20 +822,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\] {
-  background-color: ;
-}
-
-.bg-\[\#62b904\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(98 185 4 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\#8bfa15\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(139 250 21 / var(--tw-bg-opacity, 1));
 }
 
 .object-cover {
@@ -971,6 +930,11 @@ video {
   color: rgb(255 0 0 / var(--tw-text-opacity, 1));
 }
 
+.text-\[blue\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 255 / var(--tw-text-opacity, 1));
+}
+
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity, 1));
@@ -984,11 +948,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-\[blue\] {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 255 / var(--tw-text-opacity, 1));
 }
 
 .outline-none {
