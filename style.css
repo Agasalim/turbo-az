@@ -171,7 +171,7 @@ input[type="number"]::-webkit-outer-spin-button {
 #sebet {
   z-index: 999;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: right 0.5s ease;
   position: fixed;
@@ -327,6 +327,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .topLinks ul {gap: 7px;}
   .navbar {padding: 0 5%;}
   .navbar ul {
+    max-height: 0;
     position: absolute;
     top: 100%;
     left: 0;
