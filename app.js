@@ -225,7 +225,7 @@ axtaris.oninput = function() {
     showCars(filteredCars);
 }
 function showDetails(id){
-    window.location.href = `http://127.0.0.1:5500/details.html?id=${id}`
+    window.location.href = `http://127.0.0.1:5500/index.html?id=${id}`
 }
 goBack = showCars;
 function sec(icon){
