@@ -225,7 +225,7 @@ axtaris.oninput = function() {
     showCars(filteredCars);
 }
 function showDetails(id){
-    window.location.href = `http://127.0.0.1:5500/turbo-az/details.html?id=${id}`
+    window.location.href = `https://turbo-az-two.vercel.app/details.html?id=${id}`
 }
 goBack = showCars;
 function sec(icon){
