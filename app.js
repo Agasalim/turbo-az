@@ -1,4 +1,3 @@
-let sebetList = [];
 let cars = document.querySelector(".cars");
 let more = document.querySelector(".more");
 let marka = document.querySelector("#marka");
@@ -36,6 +35,7 @@ navLinks.style.maxHeight = "0px";
 filterSection.style.maxHeight = "0px"
 elanElave.style.maxHeight = "0px"
 sebet.style.right = "-450px"
+let sebetList = [];
 let reqem = 4;
 randomSlider()
 // carSlider();
@@ -121,7 +121,7 @@ function showCars(carList = carModels){
         <div class="car">
             <div class="car_img mb-4">
                 <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
-                <i class="fa-regular fa-heart" onclick="sec(this)"></i>
+                <i class="fa-regular fa-heart" onclick="sec(${masin.id})"></i>
             </div>
             <h3 class="car_price">${masin.qiymet}</h3>
             <h4 class="car_model">${masin.marka} ${masin.model}</h4>
@@ -151,9 +151,7 @@ function ShowMore(){
 }
 function showSebet(){
     orderList.innerHTML = ""
-    if(sebetList.length == 0){
-        orderList.innerHTML = `<p class="text-xl my-5">Hec bir mehsul elave edilmeyib...</p>`
-    }
+    if(sebetList.length == 0) orderList.innerHTML = `<p class="text-xl my-5">Hec bir mehsul elave edilmeyib...</p>`
     else{
         sebetList.forEach(element =>{
             orderList.innerHTML += `
@@ -228,9 +226,15 @@ function showDetails(id){
     window.location.href = `https://turbo-az-two.vercel.app/details.html?id=${id}`
 }
 goBack = showCars;
-function sec(icon){
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
+function sec(id){
+    // icon.classList.toggle("fa-regular");
+    // icon.classList.toggle("fa-solid");
+    let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || []
+    let wishCar = carModels.find(item => item.id == id)
+    let whisListVarsa = wishlist.some(item => item.id == id)
+    if(!whisListVarsa) wishlist.push(wishCar);
+    console.log(wishlist);
+    localStorage.setItem("wishCarList", JSON.stringify(wishlist))
 }
 function markaList(){ // masin siyahisini yaradib selecte elave etmek
     let masinAdlari = [];

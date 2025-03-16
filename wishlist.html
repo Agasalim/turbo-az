@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+
+    <div class="topHeading">
+        <div class="container">
+            <div class="topLinks flex items-center">
+                <ul>
+                    <li><a href="https://tap.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Tap.az</a></li>
+                    <li><a href="https://bina.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Bina.az</a></li>
+                    <li><a href="https://boss.az/?utm_source=turboaz&utm_medium=desktop-nav&utm_campaign=only-logo#_gl=1*1wtupv8*_ga*MjA5MDAxMzIxNi4xNzQwMTU4NTY0*_ga_68B6PJZXYD*MTc0MDE1ODU2NC4xLjAuMTc0MDE1ODU2NC42MC4wLjA."
+                            target="_blank">Boss.az</a></li>
+                </ul>
+                <ul>
+                    <li>Destek: <a href="tel:+994(77) 399 78 11">+994(77) 399 78 11</a></li>
+                    <li>Yardim</li>
+                    <li>RU</li>
+                    <li>
+                        <div>
+                            <a href=""><i class="fa-solid fa-heart cursor-pointer"></i> Secilmisler</a>
+                            <a href=""><i class="fa-solid fa-user"></i> Giris</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header class="relative">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="https://turbo-az-two.vercel.app/">TURBO.AZ</a>
+                </div>
+                <ul class="navlinks">
+                    <li><a href="https://turbo-az-two.vercel.app/">Butun elanlar</a></li>
+                    <li><a href="">Avtosalonlar</a></li>
+                    <li><a href="">Moto</a></li>
+                    <li><a href="">Ehtiyat hisseleri ve aksesuarlar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-10">
+            <div class="wishcars grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+        </div>
+
+
+    </main>
+
+    <footer></footer>
+
+
+    <script src="carData.js"></script>
+    <script>
+        let wishcars = document.querySelector(".wishcars")
+        let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || []
+        wishcars.innerHTML = ""
+        wishlist.forEach(masin => {
+            wishcars.innerHTML += 
+                `<div class="car">
+                    <div class="car_img mb-4">
+                        <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
+                        <i class="fa-regular fa-heart" onclick="sec(${masin.id})"></i>
+                    </div>
+                    <h3 class="car_price">${masin.qiymet}</h3>
+                    <h4 class="car_model">${masin.marka} ${masin.model}</h4>
+                    <div class="car_info justify-between">
+                        <p class="car_year">${masin.il},</p>
+                        <p class="engine">${masin.mator} L,</p>
+                        <p class="car_color"  style="color: ${masin.reng};">${masin.reng}</p>
+                    </div>
+                    <div class="mt-2 flex justify-center">
+                        <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
+                    </div>
+                </div>`            
+        });
+        console.log(wishlist);
+        
+
+    </script>
+
+</body>
+
+</html>
