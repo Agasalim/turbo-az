@@ -112,38 +112,56 @@ document.addEventListener("click", function(event){ // elan section toggle
 })
 shoppingCard.onclick = () => sebet.style.right = "0"
 closeBasket.onclick = () => sebet.style.right = "-450px"
-function showCars(carList = carModels){
-    cars.innerHTML ="";
+
+function showCars(carList = carModels) {
+    cars.innerHTML = "";
     carList
-    .slice(0, reqem)
-    .map((masin) => {
-        cars.innerHTML +=`
-        <div class="car">
-            <div class="car_img mb-4">
-                <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
-                <i class="fa-regular fa-heart" onclick="sec(${masin.id})"></i>
-            </div>
-            <h3 class="car_price">${masin.qiymet}</h3>
-            <h4 class="car_model">${masin.marka} ${masin.model}</h4>
-            <div class="car_info justify-between">
-                <p class="car_year">${masin.il},</p>
-                <p class="engine">${masin.mator} L,</p>
-                <p class="car_color"  style="color: ${masin.reng};">${masin.reng}</p>
-            </div>
-            <div class="mt-2 flex justify-center">
-                <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
-            </div>
-        </div>`
-    })
-    more.innerHTML = ""
-    if(reqem < carList.length){
+        .slice(0, reqem)
+        .map((masin) => {
+            let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || [];
+            let isInWishlist = wishlist.some(item => item.id == masin.id);
+            cars.innerHTML += `
+            <div class="car">
+                <div class="car_img mb-4">
+                    <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
+                    <i id="heart-icon-${masin.id}" class="${isInWishlist ? 'fa-solid' : 'fa-regular'} fa-heart" onclick="sec(${masin.id})"></i>
+                </div>
+                <h3 class="car_price">${masin.qiymet}</h3>
+                <h4 class="car_model">${masin.marka} ${masin.model}</h4>
+                <div class="car_info justify-between">
+                    <p class="car_year">${masin.il},</p>
+                    <p class="engine">${masin.mator} L,</p>
+                    <p class="car_color" style="color: ${masin.reng};">${masin.reng}</p>
+                </div>
+                <div class="mt-2 flex justify-center">
+                    <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
+                </div>
+            </div>`;
+        });
+    more.innerHTML = "";
+    if (reqem < carList.length) {
         more.innerHTML += `
-                <button
-                    class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium"
-                    onclick="ShowMore()">Show more
-                    <i class="fa-solid fa-angles-right ml-3"></i>
-                </button>`
+            <button class="more_btn mt-5 bg-slate-300 p-3 w-[200px] rounded-2xl hover:bg-slate-400 transition text-xl text-slate-800 font-medium" onclick="ShowMore()">
+                Show more <i class="fa-solid fa-angles-right ml-3"></i>
+            </button>`;
     }
+}
+function sec(id) {
+    let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || [];
+    let wishCar = carModels.find(item => item.id == id);
+    let whisListVarsa = wishlist.some(item => item.id == id);
+    const heartIcon = document.querySelector(`#heart-icon-${id}`);
+    if (!whisListVarsa) {
+        wishlist.push(wishCar);
+        heartIcon.classList.remove("fa-regular");
+        heartIcon.classList.add("fa-solid");
+    } else {
+        wishlist = wishlist.filter(item => item.id != id);
+        heartIcon.classList.remove("fa-solid");
+        heartIcon.classList.add("fa-regular");
+    }
+    localStorage.setItem("wishCarList", JSON.stringify(wishlist));
+    showCars();
 }
 function ShowMore(){
     reqem = reqem + 4;
@@ -226,16 +244,6 @@ function showDetails(id){
     window.location.href = `https://turbo-az-two.vercel.app/details.html?id=${id}`
 }
 goBack = showCars;
-function sec(id){
-    // icon.classList.toggle("fa-regular");
-    // icon.classList.toggle("fa-solid");
-    let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || []
-    let wishCar = carModels.find(item => item.id == id)
-    let whisListVarsa = wishlist.some(item => item.id == id)
-    if(!whisListVarsa) wishlist.push(wishCar);
-    console.log(wishlist);
-    localStorage.setItem("wishCarList", JSON.stringify(wishlist))
-}
 function markaList(){ // masin siyahisini yaradib selecte elave etmek
     let masinAdlari = [];
     carModels.forEach(item => {
@@ -316,7 +324,6 @@ qiymetSort.onchange = function(){
             let priceB = Number(b.qiymet.replace(/\s/g, ""));
             return priceB - priceA;
         })
-        console.log(bahaliMasinlar);
         showCars(bahaliMasinlar);
     }
     else if(qiymetSort.value == "sifirla") showCars();

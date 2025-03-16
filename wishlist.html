@@ -73,31 +73,47 @@
 
     <script src="carData.js"></script>
     <script>
-        let wishcars = document.querySelector(".wishcars")
-        let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || []
-        wishcars.innerHTML = ""
-        wishlist.forEach(masin => {
-            wishcars.innerHTML += 
-                `<div class="car">
-                    <div class="car_img mb-4">
-                        <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
-                        <i class="fa-regular fa-heart" onclick="sec(${masin.id})"></i>
-                    </div>
-                    <h3 class="car_price">${masin.qiymet}</h3>
-                    <h4 class="car_model">${masin.marka} ${masin.model}</h4>
-                    <div class="car_info justify-between">
-                        <p class="car_year">${masin.il},</p>
-                        <p class="engine">${masin.mator} L,</p>
-                        <p class="car_color"  style="color: ${masin.reng};">${masin.reng}</p>
-                    </div>
-                    <div class="mt-2 flex justify-center">
-                        <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
-                    </div>
-                </div>`            
-        });
-        console.log(wishlist);
-        
-
+        let wishcars = document.querySelector(".wishcars");
+        function renderWishlist() {
+            let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || [];
+            if (wishlist.length == 0) {
+                wishcars.innerHTML = `<p class="mt-10 text-center">Secilmisler-də hec bir masin yoxdur!</p>`;
+            }
+            else{
+                wishcars.innerHTML = "";
+                wishlist.forEach(masin => {
+                    wishcars.innerHTML += `
+                        <div class="car">
+                            <div class="car_img mb-4">
+                                <img src="${masin.img}" alt="carPhoto" onclick="showDetails(${masin.id})"/>
+                                <i id="heart-icon-${masin.id}" class="fa-solid fa-heart" onclick="sec(${masin.id})"></i>
+                            </div>
+                            <h3 class="car_price">${masin.qiymet}</h3>
+                            <h4 class="car_model">${masin.marka} ${masin.model}</h4>
+                            <div class="car_info justify-between">
+                                <p class="car_year">${masin.il},</p>
+                                <p class="engine">${masin.mator} L,</p>
+                                <p class="car_color" style="color: ${masin.reng};">${masin.reng}</p>
+                            </div>
+                            <div class="mt-2 flex justify-center">
+                                <button onclick="addToCard(${masin.id})" class="add_card_btn bg-[#3DB460] text-white w-[80%] px-5 py-2 rounded-3xl">Add to Card</button>
+                            </div>
+                        </div>`;
+                });
+            }
+        }
+        renderWishlist();
+        function sec(id) {
+            let wishlist = JSON.parse(localStorage.getItem("wishCarList")) || [];
+            const heartIcon = document.querySelector(`#heart-icon-${id}`);
+            if (wishlist.some(item => item.id === id)) {
+                wishlist = wishlist.filter(item => item.id !== id);
+                heartIcon.classList.remove("fa-solid");
+                heartIcon.classList.add("fa-regular");
+            }
+            localStorage.setItem("wishCarList", JSON.stringify(wishlist));
+            renderWishlist();
+        }
     </script>
 
 </body>
