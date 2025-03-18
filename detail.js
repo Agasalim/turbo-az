@@ -21,8 +21,8 @@ function showCarDetails(){
             </div>
             <div class="more_info flex justify-between gap-5">
                 <div class="model_img lg:w-[60%] sm:w-[90%]">
-                    <img class="w-full object-cover rounded-3xl" src="${car.img}" alt="carPhoto" onclick="showDetails(${carDetail.id})"/>
-                    <i id="heart-icon-${masin.id}" class="${isInWishlist ? 'fa-solid' : 'fa-regular'} fa-heart" onclick="sec(${masin.id})"></i>
+                    <img class="w-full object-cover rounded-3xl" src="${car.img}" alt="carPhoto"/>
+                    <i id="heart-icon-${car.id}" class="${isInWishlist ? 'fa-solid' : 'fa-regular'} fa-heart" onclick="sec(${car.id})"></i>
                 </div>
                 <div class="more_details rounded-3xl lg:w-[35%] sm:w-[90%] p-5">
                     <h3 class="car_price">Qiymet: ${car.qiymet} AZN</h3>
